@@ -1,0 +1,1509 @@
+ <style>
+    /* ==========================================================================
+   หมวดที่ 1: การจัดตำแหน่งและระยะเยื้อง (Align & Absolute Offsets)
+   คำอธิบาย: ใช้จัดตำแหน่งแบบ Absolute (ซ้าย, ขวา, บน, ล่าง, กึ่งกลาง)
+   - .al (ชิดซ้ายสุด), .ar (ชิดขวาสุด), .at/.au (ชิดบนสุด), .ab (ชิดล่างสุด), .ac (กึ่งกลางแนวนอน)
+   - .al-0 ถึง .al-10: เคาะเยื้องไปทางซ้ายเพิ่มตามตัวเลข
+   - .ar-0 ถึง .ar-10: เคาะเยื้องไปทางขวาเพิ่มตามตัวเลข
+   - .at-0 ถึง .at-10: เคาะเยื้องขึ้นบนเพิ่มตามตัวเลข
+   - .ab-0 ถึง .ab-10: เคาะเยื้องลงล่างเพิ่มตามตัวเลข
+   ========================================================================== */
+  .al { position: absolute !important; left: 0 !important; }
+  .ar { position: absolute !important; right: 0 !important; }
+  .at, .au { position: absolute !important; top: 0 !important; }
+  .ab { position: absolute !important; bottom: 0 !important; }
+  .ac { position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; }
+
+  /* 1.1 Align Left Offsets (เยื้องไปทางซ้ายเพิ่มขึ้น) */
+  .al-0 { left: -0.125rem !important; position: absolute !important; }
+  .al-0\.5 { left: -0.25rem !important; position: absolute !important; }
+  .al-1 { left: -0.375rem !important; position: absolute !important; }
+  .al-1\.5 { left: -0.5rem !important; position: absolute !important; }
+  .al-2 { left: -0.625rem !important; position: absolute !important; }
+  .al-2\.5 { left: -0.75rem !important; position: absolute !important; }
+  .al-3 { left: -0.875rem !important; position: absolute !important; }
+  .al-3\.5 { left: -1rem !important; position: absolute !important; }
+  .al-4 { left: -1.125rem !important; position: absolute !important; }
+  .al-4\.5 { left: -1.25rem !important; position: absolute !important; }
+  .al-5 { left: -1.375rem !important; position: absolute !important; }
+  .al-5\.5 { left: -1.5rem !important; position: absolute !important; }
+  .al-6 { left: -1.625rem !important; position: absolute !important; }
+  .al-6\.5 { left: -1.75rem !important; position: absolute !important; }
+  .al-7 { left: -1.875rem !important; position: absolute !important; }
+  .al-7\.5 { left: -2rem !important; position: absolute !important; }
+  .al-8 { left: -2.125rem !important; position: absolute !important; }
+  .al-8\.5 { left: -2.25rem !important; position: absolute !important; }
+  .al-9 { left: -2.375rem !important; position: absolute !important; }
+  .al-9\.5 { left: -2.5rem !important; position: absolute !important; }
+  .al-10 { left: -2.75rem !important; position: absolute !important; }
+
+  /* 1.2 Align Right Offsets (เยื้องไปทางขวาเพิ่มขึ้น) */
+  .ar-0 { right: -0.125rem !important; position: absolute !important; }
+  .ar-0\.5 { right: -0.25rem !important; position: absolute !important; }
+  .ar-1 { right: -0.375rem !important; position: absolute !important; }
+  .ar-1\.5 { right: -0.5rem !important; position: absolute !important; }
+  .ar-2 { right: -0.625rem !important; position: absolute !important; }
+  .ar-2\.5 { right: -0.75rem !important; position: absolute !important; }
+  .ar-3 { right: -0.875rem !important; position: absolute !important; }
+  .ar-3\.5 { right: -1rem !important; position: absolute !important; }
+  .ar-4 { right: -1.125rem !important; position: absolute !important; }
+  .ar-4\.5 { right: -1.25rem !important; position: absolute !important; }
+  .ar-5 { right: -1.375rem !important; position: absolute !important; }
+  .ar-5\.5 { right: -1.5rem !important; position: absolute !important; }
+  .ar-6 { right: -1.625rem !important; position: absolute !important; }
+  .ar-6\.5 { right: -1.75rem !important; position: absolute !important; }
+  .ar-7 { right: -1.875rem !important; position: absolute !important; }
+  .ar-7\.5 { right: -2rem !important; position: absolute !important; }
+  .ar-8 { right: -2.125rem !important; position: absolute !important; }
+  .ar-8\.5 { right: -2.25rem !important; position: absolute !important; }
+  .ar-9 { right: -2.375rem !important; position: absolute !important; }
+  .ar-9\.5 { right: -2.5rem !important; position: absolute !important; }
+  .ar-10 { right: -2.75rem !important; position: absolute !important; }
+
+  /* 1.3 Align Top / Up Offsets (เยื้องขึ้นด้านบนเพิ่มขึ้น) */
+  .at-0, .au-0 { top: -0.125rem !important; position: absolute !important; }
+  .at-0\.5, .au-0\.5 { top: -0.25rem !important; position: absolute !important; }
+  .at-1, .au-1 { top: -0.375rem !important; position: absolute !important; }
+  .at-1\.5, .au-1\.5 { top: -0.5rem !important; position: absolute !important; }
+  .at-2, .au-2 { top: -0.625rem !important; position: absolute !important; }
+  .at-2\.5, .au-2\.5 { top: -0.75rem !important; position: absolute !important; }
+  .at-3, .au-3 { top: -0.875rem !important; position: absolute !important; }
+  .at-3\.5, .au-3\.5 { top: -1rem !important; position: absolute !important; }
+  .at-4, .au-4 { top: -1.125rem !important; position: absolute !important; }
+  .at-4\.5, .au-4\.5 { top: -1.25rem !important; position: absolute !important; }
+  .at-5, .au-5 { top: -1.375rem !important; position: absolute !important; }
+  .at-5\.5, .au-5\.5 { top: -1.5rem !important; position: absolute !important; }
+  .at-6, .au-6 { top: -1.625rem !important; position: absolute !important; }
+  .at-6\.5, .au-6\.5 { top: -1.75rem !important; position: absolute !important; }
+  .at-7, .au-7 { top: -1.875rem !important; position: absolute !important; }
+  .at-7\.5, .au-7\.5 { top: -2rem !important; position: absolute !important; }
+  .at-8, .au-8 { top: -2.125rem !important; position: absolute !important; }
+  .at-8\.5, .au-8\.5 { top: -2.25rem !important; position: absolute !important; }
+  .at-9, .au-9 { top: -2.375rem !important; position: absolute !important; }
+  .at-9\.5, .au-9\.5 { top: -2.5rem !important; position: absolute !important; }
+  .at-10, .au-10 { top: -2.75rem !important; position: absolute !important; }
+
+  /* 1.4 Align Bottom Offsets (เยื้องลงด้านล่างเพิ่มขึ้น) */
+  .ab-0 { bottom: -0.125rem !important; position: absolute !important; }
+  .ab-0\.5 { bottom: -0.25rem !important; position: absolute !important; }
+  .ab-1 { bottom: -0.375rem !important; position: absolute !important; }
+  .ab-1\.5 { bottom: -0.5rem !important; position: absolute !important; }
+  .ab-2 { bottom: -0.625rem !important; position: absolute !important; }
+  .ab-2\.5 { bottom: -0.75rem !important; position: absolute !important; }
+  .ab-3 { bottom: -0.875rem !important; position: absolute !important; }
+  .ab-3\.5 { bottom: -1rem !important; position: absolute !important; }
+  .ab-4 { bottom: -1.125rem !important; position: absolute !important; }
+  .ab-4\.5 { bottom: -1.25rem !important; position: absolute !important; }
+  .ab-5 { bottom: -1.375rem !important; position: absolute !important; }
+  .ab-5\.5 { bottom: -1.5rem !important; position: absolute !important; }
+  .ab-6 { bottom: -1.625rem !important; position: absolute !important; }
+  .ab-6\.5 { bottom: -1.75rem !important; position: absolute !important; }
+  .ab-7 { bottom: -1.875rem !important; position: absolute !important; }
+  .ab-7\.5 { bottom: -2rem !important; position: absolute !important; }
+  .ab-8 { bottom: -2.125rem !important; position: absolute !important; }
+  .ab-8\.5 { bottom: -2.25rem !important; position: absolute !important; }
+  .ab-9 { bottom: -2.375rem !important; position: absolute !important; }
+  .ab-9\.5 { bottom: -2.5rem !important; position: absolute !important; }
+  .ab-10 { bottom: -2.75rem !important; position: absolute !important; }
+
+
+  /* ==========================================================================
+   หมวดที่ 2: ระยะห่างภายนอก (Margin Utilities)
+   คำอธิบาย: กำหนดระยะห่างรอบนอกของ Element ตั้งแต่ 0 ถึง 10 (ละเอียดระดับ 0.5)
+   - .m-0 ถึง .m-10: ระยะห่างรอบทิศทาง 4 ด้าน
+   - .mt-...: ระยะห่างด้านบน (Top)
+   - .mb-... / .md-...: ระยะห่างด้านล่าง (Bottom/Down)
+   - .ml-...: ระยะห่างด้านซ้าย (Left)
+   - .mr-...: ระยะห่างด้านขวา (Right)
+   ========================================================================== */
+  .m-0 { margin: 0.125rem !important; }
+  .m-0\.5 { margin: 0.25rem !important; }
+  .m-1 { margin: 0.375rem !important; }
+  .m-1\.5 { margin: 0.5rem !important; }
+  .m-2 { margin: 0.625rem !important; }
+  .m-2\.5 { margin: 0.75rem !important; }
+  .m-3 { margin: 0.875rem !important; }
+  .m-3\.5 { margin: 1rem !important; }
+  .m-4 { margin: 1.125rem !important; }
+  .m-4\.5 { margin: 1.25rem !important; }
+  .m-5 { margin: 1.375rem !important; }
+  .m-5\.5 { margin: 1.5rem !important; }
+  .m-6 { margin: 1.625rem !important; }
+  .m-6\.5 { margin: 1.75rem !important; }
+  .m-7 { margin: 1.875rem !important; }
+  .m-7\.5 { margin: 2rem !important; }
+  .m-8 { margin: 2.125rem !important; }
+  .m-8\.5 { margin: 2.25rem !important; }
+  .m-9 { margin: 2.375rem !important; }
+  .m-9\.5 { margin: 2.5rem !important; }
+  .m-10 { margin: 2.75rem !important; }
+
+  /* Margin à¹à¸¢à¸à¸£à¸²à¸¢à¸—à¸´à¸¨à¸—à¸²à¸‡ (mt, mb/md, ml, mr) */
+  .mt-0 { margin-top: 0.125rem !important; }
+  .mt-0\.5 { margin-top: 0.25rem !important; }
+  .mt-1 { margin-top: 0.375rem !important; }
+  .mt-1\.5 { margin-top: 0.5rem !important; }
+  .mt-2 { margin-top: 0.625rem !important; }
+  .mt-2\.5 { margin-top: 0.75rem !important; }
+  .mt-3 { margin-top: 0.875rem !important; }
+  .mt-3\.5 { margin-top: 1rem !important; }
+  .mt-4 { margin-top: 1.125rem !important; }
+  .mt-4\.5 { margin-top: 1.25rem !important; }
+  .mt-5 { margin-top: 1.375rem !important; }
+  .mt-5\.5 { margin-top: 1.5rem !important; }
+  .mt-6 { margin-top: 1.625rem !important; }
+  .mt-6\.5 { margin-top: 1.75rem !important; }
+  .mt-7 { margin-top: 1.875rem !important; }
+  .mt-7\.5 { margin-top: 2rem !important; }
+  .mt-8 { margin-top: 2.125rem !important; }
+  .mt-8\.5 { margin-top: 2.25rem !important; }
+  .mt-9 { margin-top: 2.375rem !important; }
+  .mt-9\.5 { margin-top: 2.5rem !important; }
+  .mt-10 { margin-top: 2.75rem !important; }
+
+  .mb-0, .md-0 { margin-bottom: 0.125rem !important; }
+  .mb-0\.5, .md-0\.5 { margin-bottom: 0.25rem !important; }
+  .mb-1, .md-1 { margin-bottom: 0.375rem !important; }
+  .mb-1\.5, .md-1\.5 { margin-bottom: 0.5rem !important; }
+  .mb-2, .md-2 { margin-bottom: 0.625rem !important; }
+  .mb-2\.5, .md-2\.5 { margin-bottom: 0.75rem !important; }
+  .mb-3, .md-3 { margin-bottom: 0.875rem !important; }
+  .mb-3\.5, .md-3\.5 { margin-bottom: 1rem !important; }
+  .mb-4, .md-4 { margin-bottom: 1.125rem !important; }
+  .mb-4\.5, .md-4\.5 { margin-bottom: 1.25rem !important; }
+  .mb-5, .md-5 { margin-bottom: 1.375rem !important; }
+  .mb-5\.5, .md-5\.5 { margin-bottom: 1.5rem !important; }
+  .mb-6, .md-6 { margin-bottom: 1.625rem !important; }
+  .mb-6\.5, .md-6\.5 { margin-bottom: 1.75rem !important; }
+  .mb-7, .md-7 { margin-bottom: 1.875rem !important; }
+  .mb-7\.5, .md-7\.5 { margin-bottom: 2rem !important; }
+  .mb-8, .md-8 { margin-bottom: 2.125rem !important; }
+  .mb-8\.5, .md-8\.5 { margin-bottom: 2.25rem !important; }
+  .mb-9, .md-9 { margin-bottom: 2.375rem !important; }
+  .mb-9\.5, .md-9\.5 { margin-bottom: 2.5rem !important; }
+  .mb-10, .md-10 { margin-bottom: 2.75rem !important; }
+
+  .ml-0 { margin-left: 0.125rem !important; }
+  .ml-0\.5 { margin-left: 0.25rem !important; }
+  .ml-1 { margin-left: 0.375rem !important; }
+  .ml-1\.5 { margin-left: 0.5rem !important; }
+  .ml-2 { margin-left: 0.625rem !important; }
+  .ml-2\.5 { margin-left: 0.75rem !important; }
+  .ml-3 { margin-left: 0.875rem !important; }
+  .ml-3\.5 { margin-left: 1rem !important; }
+  .ml-4 { margin-left: 1.125rem !important; }
+  .ml-4\.5 { margin-left: 1.25rem !important; }
+  .ml-5 { margin-left: 1.375rem !important; }
+  .ml-5\.5 { margin-left: 1.5rem !important; }
+  .ml-6 { margin-left: 1.625rem !important; }
+  .ml-6\.5 { margin-left: 1.75rem !important; }
+  .ml-7 { margin-left: 1.875rem !important; }
+  .ml-7\.5 { margin-left: 2rem !important; }
+  .ml-8 { margin-left: 2.125rem !important; }
+  .ml-8\.5 { margin-left: 2.25rem !important; }
+  .ml-9 { margin-left: 2.375rem !important; }
+  .ml-9\.5 { margin-left: 2.5rem !important; }
+  .ml-10 { margin-left: 2.75rem !important; }
+
+  .mr-0 { margin-right: 0.125rem !important; }
+  .mr-0\.5 { margin-right: 0.25rem !important; }
+  .mr-1 { margin-right: 0.375rem !important; }
+  .mr-1\.5 { margin-right: 0.5rem !important; }
+  .mr-2 { margin-right: 0.625rem !important; }
+  .mr-2\.5 { margin-right: 0.75rem !important; }
+  .mr-3 { margin-right: 0.875rem !important; }
+  .mr-3\.5 { margin-right: 1rem !important; }
+  .mr-4 { margin-right: 1.125rem !important; }
+  .mr-4\.5 { margin-right: 1.25rem !important; }
+  .mr-5 { margin-right: 1.375rem !important; }
+  .mr-5\.5 { margin-right: 1.5rem !important; }
+  .mr-6 { margin-right: 1.625rem !important; }
+  .mr-6\.5 { margin-right: 1.75rem !important; }
+  .mr-7 { margin-right: 1.875rem !important; }
+  .mr-7\.5 { margin-right: 2rem !important; }
+  .mr-8 { margin-right: 2.125rem !important; }
+  .mr-8\.5 { margin-right: 2.25rem !important; }
+  .mr-9 { margin-right: 2.375rem !important; }
+  .mr-9\.5 { margin-right: 2.5rem !important; }
+  .mr-10 { margin-right: 2.75rem !important; }
+
+
+  /* ==========================================================================
+   หมวดที่ 3: ระยะห่างภายใน (Padding Utilities)
+   คำอธิบาย: กำหนดระยะขอบด้านในของกล่อง ตั้งแต่ 0 ถึง 10 (ละเอียดระดับ 0.5)
+   - .p-0 ถึง .p-10: ระยะห่างภายในรอบทิศทาง 4 ด้าน
+   - .pt-...: ระยะห่างภายในด้านบน (Top)
+   - .pd-...: ระยะห่างภายในด้านล่าง (Down/Bottom)
+   - .pl-...: ระยะห่างภายในด้านซ้าย (Left)
+   - .pr-...: ระยะห่างภายในด้านขวา (Right)
+   ========================================================================== */
+  .p-0 { padding: 0.125rem !important; }
+  .p-0\.5 { padding: 0.25rem !important; }
+  .p-1 { padding: 0.375rem !important; }
+  .p-1\.5 { padding: 0.5rem !important; }
+  .p-2 { padding: 0.625rem !important; }
+  .p-2\.5 { padding: 0.75rem !important; }
+  .p-3 { padding: 0.875rem !important; }
+  .p-3\.5 { padding: 1rem !important; }
+  .p-4 { padding: 1.125rem !important; }
+  .p-4\.5 { padding: 1.25rem !important; }
+  .p-5 { padding: 1.375rem !important; }
+  .p-5\.5 { padding: 1.5rem !important; }
+  .p-6 { padding: 1.625rem !important; }
+  .p-6\.5 { padding: 1.75rem !important; }
+  .p-7 { padding: 1.875rem !important; }
+  .p-7\.5 { padding: 2rem !important; }
+  .p-8 { padding: 2.125rem !important; }
+  .p-8\.5 { padding: 2.25rem !important; }
+  .p-9 { padding: 2.375rem !important; }
+  .p-9\.5 { padding: 2.5rem !important; }
+  .p-10 { padding: 2.75rem !important; }
+
+  /* Padding à¹à¸¢à¸à¸£à¸²à¸¢à¸—à¸´à¸¨à¸—à¸²à¸‡ (pt, pd, pl, pr) */
+  .pt-0 { padding-top: 0.125rem !important; }
+  .pt-0\.5 { padding-top: 0.25rem !important; }
+  .pt-1 { padding-top: 0.375rem !important; }
+  .pt-1\.5 { padding-top: 0.5rem !important; }
+  .pt-2 { padding-top: 0.625rem !important; }
+  .pt-2\.5 { padding-top: 0.75rem !important; }
+  .pt-3 { padding-top: 0.875rem !important; }
+  .pt-3\.5 { padding-top: 1rem !important; }
+  .pt-4 { padding-top: 1.125rem !important; }
+  .pt-4\.5 { padding-top: 1.25rem !important; }
+  .pt-5 { padding-top: 1.375rem !important; }
+  .pt-5\.5 { padding-top: 1.5rem !important; }
+  .pt-6 { padding-top: 1.625rem !important; }
+  .pt-6\.5 { padding-top: 1.75rem !important; }
+  .pt-7 { padding-top: 1.875rem !important; }
+  .pt-7\.5 { padding-top: 2rem !important; }
+  .pt-8 { padding-top: 2.125rem !important; }
+  .pt-8\.5 { padding-top: 2.25rem !important; }
+  .pt-9 { padding-top: 2.375rem !important; }
+  .pt-9\.5 { padding-top: 2.5rem !important; }
+  .pt-10 { padding-top: 2.75rem !important; }
+
+  .pd-0 { padding-bottom: 0.125rem !important; }
+  .pd-0\.5 { padding-bottom: 0.25rem !important; }
+  .pd-1 { padding-bottom: 0.375rem !important; }
+  .pd-1\.5 { padding-bottom: 0.5rem !important; }
+  .pd-2 { padding-bottom: 0.625rem !important; }
+  .pd-2\.5 { padding-bottom: 0.75rem !important; }
+  .pd-3 { padding-bottom: 0.875rem !important; }
+  .pd-3\.5 { padding-bottom: 1rem !important; }
+  .pd-4 { padding-bottom: 1.125rem !important; }
+  .pd-4\.5 { padding-bottom: 1.25rem !important; }
+  .pd-5 { padding-bottom: 1.375rem !important; }
+  .pd-5\.5 { padding-bottom: 1.5rem !important; }
+  .pd-6 { padding-bottom: 1.625rem !important; }
+  .pd-6\.5 { padding-bottom: 1.75rem !important; }
+  .pd-7 { padding-bottom: 1.875rem !important; }
+  .pd-7\.5 { padding-bottom: 2rem !important; }
+  .pd-8 { padding-bottom: 2.125rem !important; }
+  .pd-8\.5 { padding-bottom: 2.25rem !important; }
+  .pd-9 { padding-bottom: 2.375rem !important; }
+  .pd-9\.5 { padding-bottom: 2.5rem !important; }
+  .pd-10 { padding-bottom: 2.75rem !important; }
+
+  .pl-0 { padding-left: 0.125rem !important; }
+  .pl-0\.5 { padding-left: 0.25rem !important; }
+  .pl-1 { padding-left: 0.375rem !important; }
+  .pl-1\.5 { padding-left: 0.5rem !important; }
+  .pl-2 { padding-left: 0.625rem !important; }
+  .pl-2\.5 { padding-left: 0.75rem !important; }
+  .pl-3 { padding-left: 0.875rem !important; }
+  .pl-3\.5 { padding-left: 1rem !important; }
+  .pl-4 { padding-left: 1.125rem !important; }
+  .pl-4\.5 { padding-left: 1.25rem !important; }
+  .pl-5 { padding-left: 1.375rem !important; }
+  .pl-5\.5 { padding-left: 1.5rem !important; }
+  .pl-6 { padding-left: 1.625rem !important; }
+  .pl-6\.5 { padding-left: 1.75rem !important; }
+  .pl-7 { padding-left: 1.875rem !important; }
+  .pl-7\.5 { padding-left: 2rem !important; }
+  .pl-8 { padding-left: 2.125rem !important; }
+  .pl-8\.5 { padding-left: 2.25rem !important; }
+  .pl-9 { padding-left: 2.375rem !important; }
+  .pl-9\.5 { padding-left: 2.5rem !important; }
+  .pl-10 { padding-left: 2.75rem !important; }
+
+  .pr-0 { padding-right: 0.125rem !important; }
+  .pr-0\.5 { padding-right: 0.25rem !important; }
+  .pr-1 { padding-right: 0.375rem !important; }
+  .pr-1\.5 { padding-right: 0.5rem !important; }
+  .pr-2 { padding-right: 0.625rem !important; }
+  .pr-2\.5 { padding-right: 0.75rem !important; }
+  .pr-3 { padding-right: 0.875rem !important; }
+  .pr-3\.5 { padding-right: 1rem !important; }
+  .pr-4 { padding-right: 1.125rem !important; }
+  .pr-4\.5 { padding-right: 1.25rem !important; }
+  .pr-5 { padding-right: 1.375rem !important; }
+  .pr-5\.5 { padding-right: 1.5rem !important; }
+  .pr-6 { padding-right: 1.625rem !important; }
+  .pr-6\.5 { padding-right: 1.75rem !important; }
+  .pr-7 { padding-right: 1.875rem !important; }
+  .pr-7\.5 { padding-right: 2rem !important; }
+  .pr-8 { padding-right: 2.125rem !important; }
+  .pr-8\.5 { padding-right: 2.25rem !important; }
+  .pr-9 { padding-right: 2.375rem !important; }
+  .pr-9\.5 { padding-right: 2.5rem !important; }
+  .pr-10 { padding-right: 2.75rem !important; }
+
+/* ==========================================================================
+   หมวดที่ 4: ชุดสีพื้นหลังและสีข้อความ (Color System: 0 - 100)
+   คำอธิบาย: ระบบชุดสี Material/Bootstrap ไล่เฉดความเข้มตั้งแต่ 0 (สว่างสุด/ขาว) ถึง 100 (มืดสุด/ดำ)
+   - .bg-{color}-{shade}: เปลี่ยนสีพื้นหลังพร้อมปรับสีตัวอักษรให้อ่านง่ายอัตโนมัติ
+   - .text-{color}-{shade}: เปลี่ยนสีตัวอักษรตามเฉดสี
+   ========================================================================== */
+/* ==========================================
+   1. สีฟ้า / น้ำเงิน (Blue: 0 - 100)
+   ========================================== */
+.bg-blue-0 { background-color: #ffffff !important; color: #084298 !important; }
+.bg-blue-5 { background-color: #f5f8ff !important; color: #084298 !important; }
+.bg-blue-10 { background-color: #cfe2ff !important; color: #084298 !important; }
+.bg-blue-12 { background-color: #c4dbff !important; color: #084298 !important; }
+.bg-blue-15 { background-color: #b8d4ff !important; color: #084298 !important; }
+.bg-blue-20 { background-color: #9ec5fe !important; color: #084298 !important; }
+.bg-blue-25 { background-color: #84b6fe !important; color: #052c65 !important; }
+.bg-blue-30 { background-color: #6ea8fe !important; color: #052c65 !important; }
+.bg-blue-35 { background-color: #559afc !important; color: #052c65 !important; }
+.bg-blue-40 { background-color: #3d8bfd !important; color: #ffffff !important; }
+.bg-blue-45 { background-color: #257dfd !important; color: #ffffff !important; }
+.bg-blue, .bg-blue-50 { background-color: #0d6efd !important; color: #ffffff !important; }
+.bg-blue-55 { background-color: #0b63e0 !important; color: #ffffff !important; }
+.bg-blue-60 { background-color: #0a58ca !important; color: #ffffff !important; }
+.bg-blue-65 { background-color: #094eb1 !important; color: #ffffff !important; }
+.bg-blue-70 { background-color: #084298 !important; color: #ffffff !important; }
+.bg-blue-75 { background-color: #06377f !important; color: #ffffff !important; }
+.bg-blue-80 { background-color: #052c65 !important; color: #ffffff !important; }
+.bg-blue-85 { background-color: #032251 !important; color: #ffffff !important; }
+.bg-blue-90 { background-color: #02183d !important; color: #ffffff !important; }
+.bg-blue-95 { background-color: #010d1e !important; color: #ffffff !important; }
+.bg-blue-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-blue-0 { color: #ffffff !important; }
+.text-blue-5 { color: #f5f8ff !important; }
+.text-blue-10 { color: #cfe2ff !important; }
+.text-blue-12 { color: #c4dbff !important; }
+.text-blue-15 { color: #b8d4ff !important; }
+.text-blue-20 { color: #9ec5fe !important; }
+.text-blue-25 { color: #84b6fe !important; }
+.text-blue-30 { color: #6ea8fe !important; }
+.text-blue-35 { color: #559afc !important; }
+.text-blue-40 { color: #3d8bfd !important; }
+.text-blue-45 { color: #257dfd !important; }
+.text-blue, .text-blue-50 { color: #0d6efd !important; }
+.text-blue-55 { color: #0b63e0 !important; }
+.text-blue-60 { color: #0a58ca !important; }
+.text-blue-65 { color: #094eb1 !important; }
+.text-blue-70 { color: #084298 !important; }
+.text-blue-75 { color: #06377f !important; }
+.text-blue-80 { color: #052c65 !important; }
+.text-blue-85 { color: #032251 !important; }
+.text-blue-90 { color: #02183d !important; }
+.text-blue-95 { color: #010d1e !important; }
+.text-blue-100 { color: #000000 !important; }
+
+/* ==========================================
+   2. สีอินดิโก (Indigo: 0 - 100)
+   ========================================== */
+.bg-indigo-0 { background-color: #ffffff !important; color: #3d0a91 !important; }
+.bg-indigo-5 { background-color: #f4effe !important; color: #3d0a91 !important; }
+.bg-indigo-10 { background-color: #e0cffc !important; color: #3d0a91 !important; }
+.bg-indigo-12 { background-color: #d8c4fc !important; color: #3d0a91 !important; }
+.bg-indigo-15 { background-color: #ccb4fb !important; color: #3d0a91 !important; }
+.bg-indigo-20 { background-color: #c29ffa !important; color: #290661 !important; }
+.bg-indigo-25 { background-color: #b284f9 !important; color: #290661 !important; }
+.bg-indigo-30 { background-color: #a36ef8 !important; color: #ffffff !important; }
+.bg-indigo-35 { background-color: #9455f6 !important; color: #ffffff !important; }
+.bg-indigo-40 { background-color: #853df5 !important; color: #ffffff !important; }
+.bg-indigo-45 { background-color: #7624f3 !important; color: #ffffff !important; }
+.bg-indigo, .bg-indigo-50 { background-color: #6610f2 !important; color: #ffffff !important; }
+.bg-indigo-55 { background-color: #5c0ee8 !important; color: #ffffff !important; }
+.bg-indigo-60 { background-color: #520dc2 !important; color: #ffffff !important; }
+.bg-indigo-65 { background-color: #470b9e !important; color: #ffffff !important; }
+.bg-indigo-70 { background-color: #3d0a91 !important; color: #ffffff !important; }
+.bg-indigo-75 { background-color: #330878 !important; color: #ffffff !important; }
+.bg-indigo-80 { background-color: #290661 !important; color: #ffffff !important; }
+.bg-indigo-85 { background-color: #1e0448 !important; color: #ffffff !important; }
+.bg-indigo-90 { background-color: #140330 !important; color: #ffffff !important; }
+.bg-indigo-95 { background-color: #0a0118 !important; color: #ffffff !important; }
+.bg-indigo-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-indigo-0 { color: #ffffff !important; }
+.text-indigo-5 { color: #f4effe !important; }
+.text-indigo-10 { color: #e0cffc !important; }
+.text-indigo-12 { color: #d8c4fc !important; }
+.text-indigo-15 { color: #ccb4fb !important; }
+.text-indigo-20 { color: #c29ffa !important; }
+.text-indigo-25 { color: #b284f9 !important; }
+.text-indigo-30 { color: #a36ef8 !important; }
+.text-indigo-35 { color: #9455f6 !important; }
+.text-indigo-40 { color: #853df5 !important; }
+.text-indigo-45 { color: #7624f3 !important; }
+.text-indigo, .text-indigo-50 { color: #6610f2 !important; }
+.text-indigo-55 { color: #5c0ee8 !important; }
+.text-indigo-60 { color: #520dc2 !important; }
+.text-indigo-65 { color: #470b9e !important; }
+.text-indigo-70 { color: #3d0a91 !important; }
+.text-indigo-75 { color: #330878 !important; }
+.text-indigo-80 { color: #290661 !important; }
+.text-indigo-85 { color: #1e0448 !important; }
+.text-indigo-90 { color: #140330 !important; }
+.text-indigo-95 { color: #0a0118 !important; }
+.text-indigo-100 { color: #000000 !important; }
+
+/* ==========================================
+   3. สีม่วง (Purple: 0 - 100)
+   ========================================== */
+.bg-purple-0 { background-color: #ffffff !important; color: #432874 !important; }
+.bg-purple-5 { background-color: #f5f2fa !important; color: #432874 !important; }
+.bg-purple-10 { background-color: #e2d9f3 !important; color: #432874 !important; }
+.bg-purple-12 { background-color: #dad0f0 !important; color: #432874 !important; }
+.bg-purple-15 { background-color: #cfc1ec !important; color: #432874 !important; }
+.bg-purple-20 { background-color: #c5b3e8 !important; color: #2c1a4e !important; }
+.bg-purple-25 { background-color: #b69fe2 !important; color: #2c1a4e !important; }
+.bg-purple-30 { background-color: #a88cdc !important; color: #ffffff !important; }
+.bg-purple-35 { background-color: #9976d5 !important; color: #ffffff !important; }
+.bg-purple-40 { background-color: #8b66d1 !important; color: #ffffff !important; }
+.bg-purple-45 { background-color: #7d54c9 !important; color: #ffffff !important; }
+.bg-purple, .bg-purple-50 { background-color: #6f42c1 !important; color: #ffffff !important; }
+.bg-purple-55 { background-color: #643baf !important; color: #ffffff !important; }
+.bg-purple-60 { background-color: #59359b !important; color: #ffffff !important; }
+.bg-purple-65 { background-color: #4e2e87 !important; color: #ffffff !important; }
+.bg-purple-70 { background-color: #432874 !important; color: #ffffff !important; }
+.bg-purple-75 { background-color: #382161 !important; color: #ffffff !important; }
+.bg-purple-80 { background-color: #2c1a4e !important; color: #ffffff !important; }
+.bg-purple-85 { background-color: #21133b !important; color: #ffffff !important; }
+.bg-purple-90 { background-color: #160d27 !important; color: #ffffff !important; }
+.bg-purple-95 { background-color: #0b0614 !important; color: #ffffff !important; }
+.bg-purple-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-purple-0 { color: #ffffff !important; }
+.text-purple-5 { color: #f5f2fa !important; }
+.text-purple-10 { color: #e2d9f3 !important; }
+.text-purple-12 { color: #dad0f0 !important; }
+.text-purple-15 { color: #cfc1ec !important; }
+.text-purple-20 { color: #c5b3e8 !important; }
+.text-purple-25 { color: #b69fe2 !important; }
+.text-purple-30 { color: #a88cdc !important; }
+.text-purple-35 { color: #9976d5 !important; }
+.text-purple-40 { color: #8b66d1 !important; }
+.text-purple-45 { color: #7d54c9 !important; }
+.text-purple, .text-purple-50 { color: #6f42c1 !important; }
+.text-purple-55 { color: #643baf !important; }
+.text-purple-60 { color: #59359b !important; }
+.text-purple-65 { color: #4e2e87 !important; }
+.text-purple-70 { color: #432874 !important; }
+.text-purple-75 { color: #382161 !important; }
+.text-purple-80 { color: #2c1a4e !important; }
+.text-purple-85 { color: #21133b !important; }
+.text-purple-90 { color: #160d27 !important; }
+.text-purple-95 { color: #0b0614 !important; }
+.text-purple-100 { color: #000000 !important; }
+
+/* ==========================================
+   4. สีชมพู (Pink: 0 - 100)
+   ========================================== */
+.bg-pink-0 { background-color: #ffffff !important; color: #801f4f !important; }
+.bg-pink-5 { background-color: #fdf5f9 !important; color: #801f4f !important; }
+.bg-pink-10 { background-color: #f7d6e6 !important; color: #801f4f !important; }
+.bg-pink-12 { background-color: #f5ccdf !important; color: #801f4f !important; }
+.bg-pink-15 { background-color: #f2c0d8 !important; color: #801f4f !important; }
+.bg-pink-20 { background-color: #efaece !important; color: #561435 !important; }
+.bg-pink-25 { background-color: #eb9bc2 !important; color: #561435 !important; }
+.bg-pink-30 { background-color: #e785b5 !important; color: #ffffff !important; }
+.bg-pink-35 { background-color: #e371a9 !important; color: #ffffff !important; }
+.bg-pink-40 { background-color: #df5d9d !important; color: #ffffff !important; }
+.bg-pink-45 { background-color: #db4890 !important; color: #ffffff !important; }
+.bg-pink, .bg-pink-50 { background-color: #d63384 !important; color: #ffffff !important; }
+.bg-pink-55 { background-color: #c02e77 !important; color: #ffffff !important; }
+.bg-pink-60 { background-color: #ab296a !important; color: #ffffff !important; }
+.bg-pink-65 { background-color: #95245c !important; color: #ffffff !important; }
+.bg-pink-70 { background-color: #801f4f !important; color: #ffffff !important; }
+.bg-pink-75 { background-color: #6b1a41 !important; color: #ffffff !important; }
+.bg-pink-80 { background-color: #561435 !important; color: #ffffff !important; }
+.bg-pink-85 { background-color: #400f28 !important; color: #ffffff !important; }
+.bg-pink-90 { background-color: #2b0a1a !important; color: #ffffff !important; }
+.bg-pink-95 { background-color: #15050d !important; color: #ffffff !important; }
+.bg-pink-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-pink-0 { color: #ffffff !important; }
+.text-pink-5 { color: #fdf5f9 !important; }
+.text-pink-10 { color: #f7d6e6 !important; }
+.text-pink-12 { color: #f5ccdf !important; }
+.text-pink-15 { color: #f2c0d8 !important; }
+.text-pink-20 { color: #efaece !important; }
+.text-pink-25 { color: #eb9bc2 !important; }
+.text-pink-30 { color: #e785b5 !important; }
+.text-pink-35 { color: #e371a9 !important; }
+.text-pink-40 { color: #df5d9d !important; }
+.text-pink-45 { color: #db4890 !important; }
+.text-pink, .text-pink-50 { color: #d63384 !important; }
+.text-pink-55 { color: #c02e77 !important; }
+.text-pink-60 { color: #ab296a !important; }
+.text-pink-65 { color: #95245c !important; }
+.text-pink-70 { color: #801f4f !important; }
+.text-pink-75 { color: #6b1a41 !important; }
+.text-pink-80 { color: #561435 !important; }
+.text-pink-85 { color: #400f28 !important; }
+.text-pink-90 { color: #2b0a1a !important; }
+.text-pink-95 { color: #15050d !important; }
+.text-pink-100 { color: #000000 !important; }
+
+/* ==========================================
+   5. สีแดง (Red: 0 - 100)
+   ========================================== */
+.bg-red-0 { background-color: #ffffff !important; color: #842029 !important; }
+.bg-red-5 { background-color: #fcf5f5 !important; color: #842029 !important; }
+.bg-red-10 { background-color: #f8d7da !important; color: #842029 !important; }
+.bg-red-12 { background-color: #f6cdD1 !important; color: #842029 !important; }
+.bg-red-15 { background-color: #f4c2c7 !important; color: #842029 !important; }
+.bg-red-20 { background-color: #f1aeb5 !important; color: #58151c !important; }
+.bg-red-25 { background-color: #ed9aa3 !important; color: #58151c !important; }
+.bg-red-30 { background-color: #ea868f !important; color: #ffffff !important; }
+.bg-red-35 { background-color: #e6717c !important; color: #ffffff !important; }
+.bg-red-40 { background-color: #e35d6a !important; color: #ffffff !important; }
+.bg-red-45 { background-color: #df4958 !important; color: #ffffff !important; }
+.bg-red, .bg-red-50 { background-color: #dc3545 !important; color: #ffffff !important; }
+.bg-red-55 { background-color: #c6303e !important; color: #ffffff !important; }
+.bg-red-60 { background-color: #b02a37 !important; color: #ffffff !important; }
+.bg-red-65 { background-color: #9a2530 !important; color: #ffffff !important; }
+.bg-red-70 { background-color: #842029 !important; color: #ffffff !important; }
+.bg-red-75 { background-color: #6e1b22 !important; color: #ffffff !important; }
+.bg-red-80 { background-color: #58151c !important; color: #ffffff !important; }
+.bg-red-85 { background-color: #421015 !important; color: #ffffff !important; }
+.bg-red-90 { background-color: #2c0b0e !important; color: #ffffff !important; }
+.bg-red-95 { background-color: #160507 !important; color: #ffffff !important; }
+.bg-red-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-red-0 { color: #ffffff !important; }
+.text-red-5 { color: #fcf5f5 !important; }
+.text-red-10 { color: #f8d7da !important; }
+.text-red-12 { color: #f6cdd1 !important; }
+.text-red-15 { color: #f4c2c7 !important; }
+.text-red-20 { color: #f1aeb5 !important; }
+.text-red-25 { color: #ed9aa3 !important; }
+.text-red-30 { color: #ea868f !important; }
+.text-red-35 { color: #e6717c !important; }
+.text-red-40 { color: #e35d6a !important; }
+.text-red-45 { color: #df4958 !important; }
+.text-red, .text-red-50 { color: #dc3545 !important; }
+.text-red-55 { color: #c6303e !important; }
+.text-red-60 { color: #b02a37 !important; }
+.text-red-65 { color: #9a2530 !important; }
+.text-red-70 { color: #842029 !important; }
+.text-red-75 { color: #6e1b22 !important; }
+.text-red-80 { color: #58151c !important; }
+.text-red-85 { color: #421015 !important; }
+.text-red-90 { color: #2c0b0e !important; }
+.text-red-95 { color: #160507 !important; }
+.text-red-100 { color: #000000 !important; }
+
+/* ==========================================
+   6. สีส้ม (Orange: 0 - 100)
+   ========================================== */
+.bg-orange-0 { background-color: #ffffff !important; color: #984c0c !important; }
+.bg-orange-5 { background-color: #fffaf5 !important; color: #984c0c !important; }
+.bg-orange-10 { background-color: #ffe5d0 !important; color: #984c0c !important; }
+.bg-orange-12 { background-color: #ffded4 !important; color: #984c0c !important; }
+.bg-orange-15 { background-color: #ffd6b9 !important; color: #984c0c !important; }
+.bg-orange-20 { background-color: #ffcca1 !important; color: #653208 !important; }
+.bg-orange-25 { background-color: #ffbe89 !important; color: #653208 !important; }
+.bg-orange-30 { background-color: #ffb071 !important; color: #000000 !important; }
+.bg-orange-35 { background-color: #ffa159 !important; color: #000000 !important; }
+.bg-orange-40 { background-color: #ff9342 !important; color: #000000 !important; }
+.bg-orange-45 { background-color: #fe882b !important; color: #ffffff !important; }
+.bg-orange, .bg-orange-50 { background-color: #fd7e14 !important; color: #ffffff !important; }
+.bg-orange-55 { background-color: #e57112 !important; color: #ffffff !important; }
+.bg-orange-60 { background-color: #ca6510 !important; color: #ffffff !important; }
+.bg-orange-65 { background-color: #b1580e !important; color: #ffffff !important; }
+.bg-orange-70 { background-color: #984c0c !important; color: #ffffff !important; }
+.bg-orange-75 { background-color: #7e3f0a !important; color: #ffffff !important; }
+.bg-orange-80 { background-color: #653208 !important; color: #ffffff !important; }
+.bg-orange-85 { background-color: #4c2606 !important; color: #ffffff !important; }
+.bg-orange-90 { background-color: #331904 !important; color: #ffffff !important; }
+.bg-orange-95 { background-color: #190c02 !important; color: #ffffff !important; }
+.bg-orange-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-orange-0 { color: #ffffff !important; }
+.text-orange-5 { color: #fffaf5 !important; }
+.text-orange-10 { color: #ffe5d0 !important; }
+.text-orange-12 { color: #ffded4 !important; }
+.text-orange-15 { color: #ffd6b9 !important; }
+.text-orange-20 { color: #ffcca1 !important; }
+.text-orange-25 { color: #ffbe89 !important; }
+.text-orange-30 { color: #ffb071 !important; }
+.text-orange-35 { color: #ffa159 !important; }
+.text-orange-40 { color: #ff9342 !important; }
+.text-orange-45 { color: #fe882b !important; }
+.text-orange, .text-orange-50 { color: #fd7e14 !important; }
+.text-orange-55 { color: #e57112 !important; }
+.text-orange-60 { color: #ca6510 !important; }
+.text-orange-65 { color: #b1580e !important; }
+.text-orange-70 { color: #984c0c !important; }
+.text-orange-75 { color: #7e3f0a !important; }
+.text-orange-80 { color: #653208 !important; }
+.text-orange-85 { color: #4c2606 !important; }
+.text-orange-90 { color: #331904 !important; }
+.text-orange-95 { color: #190c02 !important; }
+.text-orange-100 { color: #000000 !important; }
+
+/* ==========================================
+   7. สีเหลือง (Yellow: 0 - 100)
+   ========================================== */
+.bg-yellow-0 { background-color: #ffffff !important; color: #664d03 !important; }
+.bg-yellow-5 { background-color: #fffcf5 !important; color: #664d03 !important; }
+.bg-yellow-10 { background-color: #fff3cd !important; color: #664d03 !important; }
+.bg-yellow-12 { background-color: #fef0be !important; color: #664d03 !important; }
+.bg-yellow-15 { background-color: #fcedb2 !important; color: #664d03 !important; }
+.bg-yellow-20 { background-color: #ffe69c !important; color: #332601 !important; }
+.bg-yellow-25 { background-color: #ffe083 !important; color: #332601 !important; }
+.bg-yellow-30 { background-color: #ffda6a !important; color: #000000 !important; }
+.bg-yellow-35 { background-color: #ffd451 !important; color: #000000 !important; }
+.bg-yellow-40 { background-color: #ffcd39 !important; color: #000000 !important; }
+.bg-yellow-45 { background-color: #ffc720 !important; color: #000000 !important; }
+.bg-yellow, .bg-yellow-50 { background-color: #ffc107 !important; color: #000000 !important; }
+.bg-yellow-55 { background-color: #e6ad06 !important; color: #000000 !important; }
+.bg-yellow-60 { background-color: #cc9a06 !important; color: #000000 !important; }
+.bg-yellow-65 { background-color: #b38705 !important; color: #ffffff !important; }
+.bg-yellow-70 { background-color: #997404 !important; color: #ffffff !important; }
+.bg-yellow-75 { background-color: #806104 !important; color: #ffffff !important; }
+.bg-yellow-80 { background-color: #664d03 !important; color: #ffffff !important; }
+.bg-yellow-85 { background-color: #4d3a02 !important; color: #ffffff !important; }
+.bg-yellow-90 { background-color: #332601 !important; color: #ffffff !important; }
+.bg-yellow-95 { background-color: #191300 !important; color: #ffffff !important; }
+.bg-yellow-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-yellow-0 { color: #ffffff !important; }
+.text-yellow-5 { color: #fffcf5 !important; }
+.text-yellow-10 { color: #fff3cd !important; }
+.text-yellow-12 { color: #fef0be !important; }
+.text-yellow-15 { color: #fcedb2 !important; }
+.text-yellow-20 { color: #ffe69c !important; }
+.text-yellow-25 { color: #ffe083 !important; }
+.text-yellow-30 { color: #ffda6a !important; }
+.text-yellow-35 { color: #ffd451 !important; }
+.text-yellow-40 { color: #ffcd39 !important; }
+.text-yellow-45 { color: #ffc720 !important; }
+.text-yellow, .text-yellow-50 { color: #ffc107 !important; }
+.text-yellow-55 { color: #e6ad06 !important; }
+.text-yellow-60 { color: #cc9a06 !important; }
+.text-yellow-65 { color: #b38705 !important; }
+.text-yellow-70 { color: #997404 !important; }
+.text-yellow-75 { color: #806104 !important; }
+.text-yellow-80 { color: #664d03 !important; }
+.text-yellow-85 { color: #4d3a02 !important; }
+.text-yellow-90 { color: #332601 !important; }
+.text-yellow-95 { color: #191300 !important; }
+.text-yellow-100 { color: #000000 !important; }
+
+/* ==========================================
+   8. สีเขียว (Green: 0 - 100)
+   ========================================== */
+.bg-green-0 { background-color: #ffffff !important; color: #0f5132 !important; }
+.bg-green-5 { background-color: #f2f9f5 !important; color: #0f5132 !important; }
+.bg-green-10 { background-color: #d1e7dd !important; color: #0f5132 !important; }
+.bg-green-12 { background-color: #c4e2d4 !important; color: #0f5132 !important; }
+.bg-green-15 { background-color: #b5dccb !important; color: #0f5132 !important; }
+.bg-green-20 { background-color: #a3cfbb !important; color: #0a3622 !important; }
+.bg-green-25 { background-color: #8ec4aa !important; color: #0a3622 !important; }
+.bg-green-30 { background-color: #75b798 !important; color: #051b11 !important; }
+.bg-green-35 { background-color: #5fab87 !important; color: #ffffff !important; }
+.bg-green-40 { background-color: #479f76 !important; color: #ffffff !important; }
+.bg-green-45 { background-color: #309365 !important; color: #ffffff !important; }
+.bg-green, .bg-green-50 { background-color: #198754 !important; color: #ffffff !important; }
+.bg-green-55 { background-color: #177a4b !important; color: #ffffff !important; }
+.bg-green-60 { background-color: #146c43 !important; color: #ffffff !important; }
+.bg-green-65 { background-color: #115e3b !important; color: #ffffff !important; }
+.bg-green-70 { background-color: #0f5132 !important; color: #ffffff !important; }
+.bg-green-75 { background-color: #0c432a !important; color: #ffffff !important; }
+.bg-green-80 { background-color: #0a3622 !important; color: #ffffff !important; }
+.bg-green-85 { background-color: #072819 !important; color: #ffffff !important; }
+.bg-green-90 { background-color: #051b11 !important; color: #ffffff !important; }
+.bg-green-95 { background-color: #020e08 !important; color: #ffffff !important; }
+.bg-green-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-green-0 { color: #ffffff !important; }
+.text-green-5 { color: #f2f9f5 !important; }
+.text-green-10 { color: #d1e7dd !important; }
+.text-green-12 { color: #c4e2d4 !important; }
+.text-green-15 { color: #b5dccb !important; }
+.text-green-20 { color: #a3cfbb !important; }
+.text-green-25 { color: #8ec4aa !important; }
+.text-green-30 { color: #75b798 !important; }
+.text-green-35 { color: #5fab87 !important; }
+.text-green-40 { color: #479f76 !important; }
+.text-green-45 { color: #309365 !important; }
+.text-green, .text-green-50 { color: #198754 !important; }
+.text-green-55 { color: #177a4b !important; }
+.text-green-60 { color: #146c43 !important; }
+.text-green-65 { color: #115e3b !important; }
+.text-green-70 { color: #0f5132 !important; }
+.text-green-75 { color: #0c432a !important; }
+.text-green-80 { color: #0a3622 !important; }
+.text-green-85 { color: #072819 !important; }
+.text-green-90 { color: #051b11 !important; }
+.text-green-95 { color: #020e08 !important; }
+.text-green-100 { color: #000000 !important; }
+
+/* ==========================================
+   9. สีเขียวอมฟ้า (Teal: 0 - 100)
+   ========================================== */
+.bg-teal-0 { background-color: #ffffff !important; color: #13785b !important; }
+.bg-teal-5 { background-color: #f4fbf8 !important; color: #13785b !important; }
+.bg-teal-10 { background-color: #d2f4ea !important; color: #13785b !important; }
+.bg-teal-12 { background-color: #c7f1e5 !important; color: #13785b !important; }
+.bg-teal-15 { background-color: #b8eee0 !important; color: #13785b !important; }
+.bg-teal-20 { background-color: #a5ebd5 !important; color: #0c503c !important; }
+.bg-teal-25 { background-color: #8fe7ca !important; color: #0c503c !important; }
+.bg-teal-30 { background-color: #78e1bf !important; color: #06281e !important; }
+.bg-teal-35 { background-color: #61dcb4 !important; color: #000000 !important; }
+.bg-teal-40 { background-color: #4bd8aa !important; color: #000000 !important; }
+.bg-teal-45 { background-color: #35d39f !important; color: #000000 !important; }
+.bg-teal, .bg-teal-50 { background-color: #20c997 !important; color: #000000 !important; }
+.bg-teal-55 { background-color: #1cb588 !important; color: #ffffff !important; }
+.bg-teal-60 { background-color: #19a179 !important; color: #ffffff !important; }
+.bg-teal-65 { background-color: #168d6a !important; color: #ffffff !important; }
+.bg-teal-70 { background-color: #13785b !important; color: #ffffff !important; }
+.bg-teal-75 { background-color: #0f644c !important; color: #ffffff !important; }
+.bg-teal-80 { background-color: #0c503c !important; color: #ffffff !important; }
+.bg-teal-85 { background-color: #093c2d !important; color: #ffffff !important; }
+.bg-teal-90 { background-color: #06281e !important; color: #ffffff !important; }
+.bg-teal-95 { background-color: #03140f !important; color: #ffffff !important; }
+.bg-teal-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-teal-0 { color: #ffffff !important; }
+.text-teal-5 { color: #f4fbf8 !important; }
+.text-teal-10 { color: #d2f4ea !important; }
+.text-teal-12 { color: #c7f1e5 !important; }
+.text-teal-15 { color: #b8eee0 !important; }
+.text-teal-20 { color: #a5ebd5 !important; }
+.text-teal-25 { color: #8fe7ca !important; }
+.text-teal-30 { color: #78e1bf !important; }
+.text-teal-35 { color: #61dcb4 !important; }
+.text-teal-40 { color: #4bd8aa !important; }
+.text-teal-45 { color: #35d39f !important; }
+.text-teal, .text-teal-50 { color: #20c997 !important; }
+.text-teal-55 { color: #1cb588 !important; }
+.text-teal-60 { color: #19a179 !important; }
+.text-teal-65 { color: #168d6a !important; }
+.text-teal-70 { color: #13785b !important; }
+.text-teal-75 { color: #0f644c !important; }
+.text-teal-80 { color: #0c503c !important; }
+.text-teal-85 { color: #093c2d !important; }
+.text-teal-90 { color: #06281e !important; }
+.text-teal-95 { color: #03140f !important; }
+.text-teal-100 { color: #000000 !important; }
+
+/* ==========================================
+   10. สีฟ้าคราม / ทะเล (Cyan: 0 - 100)
+   ========================================== */
+.bg-cyan-0 { background-color: #ffffff !important; color: #087990 !important; }
+.bg-cyan-5 { background-color: #f2fbff !important; color: #087990 !important; }
+.bg-cyan-10 { background-color: #cff4fc !important; color: #087990 !important; }
+.bg-cyan-12 { background-color: #c2f2fd !important; color: #087990 !important; }
+.bg-cyan-15 { background-color: #b0eefa !important; color: #087990 !important; }
+.bg-cyan-20 { background-color: #9eeaf9 !important; color: #055160 !important; }
+.bg-cyan-25 { background-color: #85e5f7 !important; color: #055160 !important; }
+.bg-cyan-30 { background-color: #6edff6 !important; color: #032830 !important; }
+.bg-cyan-35 { background-color: #55daf4 !important; color: #000000 !important; }
+.bg-cyan-40 { background-color: #3dd5f3 !important; color: #000000 !important; }
+.bg-cyan-45 { background-color: #25d0f1 !important; color: #000000 !important; }
+.bg-cyan, .bg-cyan-50 { background-color: #0dcaf0 !important; color: #000000 !important; }
+.bg-cyan-55 { background-color: #0bb6d8 !important; color: #ffffff !important; }
+.bg-cyan-60 { background-color: #0aa2c0 !important; color: #ffffff !important; }
+.bg-cyan-65 { background-color: #098da8 !important; color: #ffffff !important; }
+.bg-cyan-70 { background-color: #087990 !important; color: #ffffff !important; }
+.bg-cyan-75 { background-color: #066578 !important; color: #ffffff !important; }
+.bg-cyan-80 { background-color: #055160 !important; color: #ffffff !important; }
+.bg-cyan-85 { background-color: #043d48 !important; color: #ffffff !important; }
+.bg-cyan-90 { background-color: #032830 !important; color: #ffffff !important; }
+.bg-cyan-95 { background-color: #011418 !important; color: #ffffff !important; }
+.bg-cyan-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-cyan-0 { color: #ffffff !important; }
+.text-cyan-5 { color: #f2fbff !important; }
+.text-cyan-10 { color: #cff4fc !important; }
+.text-cyan-12 { color: #c2f2fd !important; }
+.text-cyan-15 { color: #b0eefa !important; }
+.text-cyan-20 { color: #9eeaf9 !important; }
+.text-cyan-25 { color: #85e5f7 !important; }
+.text-cyan-30 { color: #6edff6 !important; }
+.text-cyan-35 { color: #55daf4 !important; }
+.text-cyan-40 { color: #3dd5f3 !important; }
+.text-cyan-45 { color: #25d0f1 !important; }
+.text-cyan, .text-cyan-50 { color: #0dcaf0 !important; }
+.text-cyan-55 { color: #0bb6d8 !important; }
+.text-cyan-60 { color: #0aa2c0 !important; }
+.text-cyan-65 { color: #098da8 !important; }
+.text-cyan-70 { color: #087990 !important; }
+.text-cyan-75 { color: #066578 !important; }
+.text-cyan-80 { color: #055160 !important; }
+.text-cyan-85 { color: #043d48 !important; }
+.text-cyan-90 { color: #032830 !important; }
+.text-cyan-95 { color: #011418 !important; }
+.text-cyan-100 { color: #000000 !important; }
+
+/* ==========================================
+   11. สีเทา (Gray: 0 - 100)
+   ========================================== */
+.bg-gray-0 { background-color: #ffffff !important; color: #495057 !important; }
+.bg-gray-5 { background-color: #fcfcfd !important; color: #495057 !important; }
+.bg-gray-10 { background-color: #f8f9fa !important; color: #495057 !important; }
+.bg-gray-12 { background-color: #f4f5f6 !important; color: #495057 !important; }
+.bg-gray-15 { background-color: #f1f3f5 !important; color: #343a40 !important; }
+.bg-gray-20 { background-color: #e9ecef !important; color: #343a40 !important; }
+.bg-gray-25 { background-color: #e4e7ea !important; color: #343a40 !important; }
+.bg-gray-30 { background-color: #dee2e6 !important; color: #212529 !important; }
+.bg-gray-35 { background-color: #d6dcde !important; color: #212529 !important; }
+.bg-gray-40 { background-color: #ced4da !important; color: #212529 !important; }
+.bg-gray-45 { background-color: #bec7cd !important; color: #212529 !important; }
+.bg-gray-50 { background-color: #adb5bd !important; color: #000000 !important; }
+.bg-gray-55 { background-color: #8c959e !important; color: #ffffff !important; }
+.bg-gray, .bg-gray-60 { background-color: #6c757d !important; color: #ffffff !important; }
+.bg-gray-65 { background-color: #5a6268 !important; color: #ffffff !important; }
+.bg-gray-70 { background-color: #495057 !important; color: #ffffff !important; }
+.bg-gray-75 { background-color: #3e444b !important; color: #ffffff !important; }
+.bg-gray-80 { background-color: #343a40 !important; color: #ffffff !important; }
+.bg-gray-85 { background-color: #2b3035 !important; color: #ffffff !important; }
+.bg-gray-90 { background-color: #212529 !important; color: #ffffff !important; }
+.bg-gray-95 { background-color: #101214 !important; color: #ffffff !important; }
+.bg-gray-100 { background-color: #000000 !important; color: #ffffff !important; }
+
+.text-gray-0 { color: #ffffff !important; }
+.text-gray-5 { color: #fcfcfd !important; }
+.text-gray-10 { color: #f8f9fa !important; }
+.text-gray-12 { color: #f4f5f6 !important; }
+.text-gray-15 { color: #f1f3f5 !important; }
+.text-gray-20 { color: #e9ecef !important; }
+.text-gray-25 { color: #e4e7ea !important; }
+.text-gray-30 { color: #dee2e6 !important; }
+.text-gray-35 { color: #d6dcde !important; }
+.text-gray-40 { color: #ced4da !important; }
+.text-gray-45 { color: #bec7cd !important; }
+.text-gray-50 { color: #adb5bd !important; }
+.text-gray-55 { color: #8c959e !important; }
+.text-gray, .text-gray-60 { color: #6c757d !important; }
+.text-gray-65 { color: #5a6268 !important; }
+.text-gray-70 { color: #495057 !important; }
+.text-gray-75 { color: #3e444b !important; }
+.text-gray-80 { color: #343a40 !important; }
+.text-gray-85 { color: #2b3035 !important; }
+.text-gray-90 { color: #212529 !important; }
+.text-gray-95 { color: #101214 !important; }
+.text-gray-100 { color: #000000 !important; }
+
+/* ==========================================================================
+   หมวดที่ 5: ฟิลเตอร์และเอฟเฟกต์ตกแต่งภาพ (Visual & Filter Effects)
+   คำอธิบาย: ปรับแต่งความโปร่งใส, ความเบลอ, โมเสกพิกเซล, และพื้นหลังดำโปร่งแสง
+   ========================================================================== */
+/* ==========================================
+   1. Opacity & Tranperment (Range 0.5 - 100)
+   ========================================== */
+.opacity-0\.5, .tranperment-0\.5 { opacity: 0.005 !important; }
+.opacity-1, .tranperment-1 { opacity: 0.01 !important; }
+.opacity-2, .tranperment-2 { opacity: 0.02 !important; }
+.opacity-3, .tranperment-3 { opacity: 0.03 !important; }
+.opacity-4, .tranperment-4 { opacity: 0.04 !important; }
+.opacity-5, .tranperment-5 { opacity: 0.05 !important; }
+.opacity-6, .tranperment-6 { opacity: 0.06 !important; }
+.opacity-7, .tranperment-7 { opacity: 0.07 !important; }
+.opacity-8, .tranperment-8 { opacity: 0.08 !important; }
+.opacity-9, .tranperment-9 { opacity: 0.09 !important; }
+.opacity-10, .tranperment-10 { opacity: 0.1 !important; }
+.opacity-11, .tranperment-11 { opacity: 0.11 !important; }
+.opacity-12, .tranperment-12 { opacity: 0.12 !important; }
+.opacity-13, .tranperment-13 { opacity: 0.13 !important; }
+.opacity-14, .tranperment-14 { opacity: 0.14 !important; }
+.opacity-15, .tranperment-15 { opacity: 0.15 !important; }
+.opacity-16, .tranperment-16 { opacity: 0.16 !important; }
+.opacity-17, .tranperment-17 { opacity: 0.17 !important; }
+.opacity-18, .tranperment-18 { opacity: 0.18 !important; }
+.opacity-19, .tranperment-19 { opacity: 0.19 !important; }
+.opacity-20, .tranperment-20 { opacity: 0.2 !important; }
+.opacity-21, .tranperment-21 { opacity: 0.21 !important; }
+.opacity-22, .tranperment-22 { opacity: 0.22 !important; }
+.opacity-23, .tranperment-23 { opacity: 0.23 !important; }
+.opacity-24, .tranperment-24 { opacity: 0.24 !important; }
+.opacity-25, .tranperment-25 { opacity: 0.25 !important; }
+.opacity-26, .tranperment-26 { opacity: 0.26 !important; }
+.opacity-27, .tranperment-27 { opacity: 0.27 !important; }
+.opacity-28, .tranperment-28 { opacity: 0.28 !important; }
+.opacity-29, .tranperment-29 { opacity: 0.29 !important; }
+.opacity-30, .tranperment-30 { opacity: 0.3 !important; }
+.opacity-31, .tranperment-31 { opacity: 0.31 !important; }
+.opacity-32, .tranperment-32 { opacity: 0.32 !important; }
+.opacity-33, .tranperment-33 { opacity: 0.33 !important; }
+.opacity-34, .tranperment-34 { opacity: 0.34 !important; }
+.opacity-35, .tranperment-35 { opacity: 0.35 !important; }
+.opacity-36, .tranperment-36 { opacity: 0.36 !important; }
+.opacity-37, .tranperment-37 { opacity: 0.37 !important; }
+.opacity-38, .tranperment-38 { opacity: 0.38 !important; }
+.opacity-39, .tranperment-39 { opacity: 0.39 !important; }
+.opacity-40, .tranperment-40 { opacity: 0.4 !important; }
+.opacity-41, .tranperment-41 { opacity: 0.41 !important; }
+.opacity-42, .tranperment-42 { opacity: 0.42 !important; }
+.opacity-43, .tranperment-43 { opacity: 0.43 !important; }
+.opacity-44, .tranperment-44 { opacity: 0.44 !important; }
+.opacity-45, .tranperment-45 { opacity: 0.45 !important; }
+.opacity-46, .tranperment-46 { opacity: 0.46 !important; }
+.opacity-47, .tranperment-47 { opacity: 0.47 !important; }
+.opacity-48, .tranperment-48 { opacity: 0.48 !important; }
+.opacity-49, .tranperment-49 { opacity: 0.49 !important; }
+.opacity-50, .tranperment-50 { opacity: 0.5 !important; }
+.opacity-51, .tranperment-51 { opacity: 0.51 !important; }
+.opacity-52, .tranperment-52 { opacity: 0.52 !important; }
+.opacity-53, .tranperment-53 { opacity: 0.53 !important; }
+.opacity-54, .tranperment-54 { opacity: 0.54 !important; }
+.opacity-55, .tranperment-55 { opacity: 0.55 !important; }
+.opacity-56, .tranperment-56 { opacity: 0.56 !important; }
+.opacity-57, .tranperment-57 { opacity: 0.57 !important; }
+.opacity-58, .tranperment-58 { opacity: 0.58 !important; }
+.opacity-59, .tranperment-59 { opacity: 0.59 !important; }
+.opacity-60, .tranperment-60 { opacity: 0.6 !important; }
+.opacity-61, .tranperment-61 { opacity: 0.61 !important; }
+.opacity-62, .tranperment-62 { opacity: 0.62 !important; }
+.opacity-63, .tranperment-63 { opacity: 0.63 !important; }
+.opacity-64, .tranperment-64 { opacity: 0.64 !important; }
+.opacity-65, .tranperment-65 { opacity: 0.65 !important; }
+.opacity-66, .tranperment-66 { opacity: 0.66 !important; }
+.opacity-67, .tranperment-67 { opacity: 0.67 !important; }
+.opacity-68, .tranperment-68 { opacity: 0.68 !important; }
+.opacity-69, .tranperment-69 { opacity: 0.69 !important; }
+.opacity-70, .tranperment-70 { opacity: 0.7 !important; }
+.opacity-71, .tranperment-71 { opacity: 0.71 !important; }
+.opacity-72, .tranperment-72 { opacity: 0.72 !important; }
+.opacity-73, .tranperment-73 { opacity: 0.73 !important; }
+.opacity-74, .tranperment-74 { opacity: 0.74 !important; }
+.opacity-75, .tranperment-75 { opacity: 0.75 !important; }
+.opacity-76, .tranperment-76 { opacity: 0.76 !important; }
+.opacity-77, .tranperment-77 { opacity: 0.77 !important; }
+.opacity-78, .tranperment-78 { opacity: 0.78 !important; }
+.opacity-79, .tranperment-79 { opacity: 0.79 !important; }
+.opacity-80, .tranperment-80 { opacity: 0.8 !important; }
+.opacity-81, .tranperment-81 { opacity: 0.81 !important; }
+.opacity-82, .tranperment-82 { opacity: 0.82 !important; }
+.opacity-83, .tranperment-83 { opacity: 0.83 !important; }
+.opacity-84, .tranperment-84 { opacity: 0.84 !important; }
+.opacity-85, .tranperment-85 { opacity: 0.85 !important; }
+.opacity-86, .tranperment-86 { opacity: 0.86 !important; }
+.opacity-87, .tranperment-87 { opacity: 0.87 !important; }
+.opacity-88, .tranperment-88 { opacity: 0.88 !important; }
+.opacity-89, .tranperment-89 { opacity: 0.89 !important; }
+.opacity-90, .tranperment-90 { opacity: 0.9 !important; }
+.opacity-91, .tranperment-91 { opacity: 0.91 !important; }
+.opacity-92, .tranperment-92 { opacity: 0.92 !important; }
+.opacity-93, .tranperment-93 { opacity: 0.93 !important; }
+.opacity-94, .tranperment-94 { opacity: 0.94 !important; }
+.opacity-95, .tranperment-95 { opacity: 0.95 !important; }
+.opacity-96, .tranperment-96 { opacity: 0.96 !important; }
+.opacity-97, .tranperment-97 { opacity: 0.97 !important; }
+.opacity-98, .tranperment-98 { opacity: 0.98 !important; }
+.opacity-99, .tranperment-99 { opacity: 0.99 !important; }
+.opacity-100, .tranperment-100 { opacity: 1 !important; }
+
+/* ==========================================
+   2. Blur (Range 0.5 - 100)
+   ========================================== */
+.blur-0\.5 { filter: blur(0.5px) !important; }
+.blur-1 { filter: blur(1px) !important; }
+.blur-2 { filter: blur(2px) !important; }
+.blur-3 { filter: blur(3px) !important; }
+.blur-4 { filter: blur(4px) !important; }
+.blur-5 { filter: blur(5px) !important; }
+.blur-6 { filter: blur(6px) !important; }
+.blur-7 { filter: blur(7px) !important; }
+.blur-8 { filter: blur(8px) !important; }
+.blur-9 { filter: blur(9px) !important; }
+.blur-10 { filter: blur(10px) !important; }
+.blur-11 { filter: blur(11px) !important; }
+.blur-12 { filter: blur(12px) !important; }
+.blur-13 { filter: blur(13px) !important; }
+.blur-14 { filter: blur(14px) !important; }
+.blur-15 { filter: blur(15px) !important; }
+.blur-16 { filter: blur(16px) !important; }
+.blur-17 { filter: blur(17px) !important; }
+.blur-18 { filter: blur(18px) !important; }
+.blur-19 { filter: blur(19px) !important; }
+.blur-20 { filter: blur(20px) !important; }
+.blur-21 { filter: blur(21px) !important; }
+.blur-22 { filter: blur(22px) !important; }
+.blur-23 { filter: blur(23px) !important; }
+.blur-24 { filter: blur(24px) !important; }
+.blur-25 { filter: blur(25px) !important; }
+.blur-26 { filter: blur(26px) !important; }
+.blur-27 { filter: blur(27px) !important; }
+.blur-28 { filter: blur(28px) !important; }
+.blur-29 { filter: blur(29px) !important; }
+.blur-30 { filter: blur(30px) !important; }
+.blur-31 { filter: blur(31px) !important; }
+.blur-32 { filter: blur(32px) !important; }
+.blur-33 { filter: blur(33px) !important; }
+.blur-34 { filter: blur(34px) !important; }
+.blur-35 { filter: blur(35px) !important; }
+.blur-36 { filter: blur(36px) !important; }
+.blur-37 { filter: blur(37px) !important; }
+.blur-38 { filter: blur(38px) !important; }
+.blur-39 { filter: blur(39px) !important; }
+.blur-40 { filter: blur(40px) !important; }
+.blur-41 { filter: blur(41px) !important; }
+.blur-42 { filter: blur(42px) !important; }
+.blur-43 { filter: blur(43px) !important; }
+.blur-44 { filter: blur(44px) !important; }
+.blur-45 { filter: blur(45px) !important; }
+.blur-46 { filter: blur(46px) !important; }
+.blur-47 { filter: blur(47px) !important; }
+.blur-48 { filter: blur(48px) !important; }
+.blur-49 { filter: blur(49px) !important; }
+.blur-50 { filter: blur(50px) !important; }
+.blur-51 { filter: blur(51px) !important; }
+.blur-52 { filter: blur(52px) !important; }
+.blur-53 { filter: blur(53px) !important; }
+.blur-54 { filter: blur(54px) !important; }
+.blur-55 { filter: blur(55px) !important; }
+.blur-56 { filter: blur(56px) !important; }
+.blur-57 { filter: blur(57px) !important; }
+.blur-58 { filter: blur(58px) !important; }
+.blur-59 { filter: blur(59px) !important; }
+.blur-60 { filter: blur(60px) !important; }
+.blur-61 { filter: blur(61px) !important; }
+.blur-62 { filter: blur(62px) !important; }
+.blur-63 { filter: blur(63px) !important; }
+.blur-64 { filter: blur(64px) !important; }
+.blur-65 { filter: blur(65px) !important; }
+.blur-66 { filter: blur(66px) !important; }
+.blur-67 { filter: blur(67px) !important; }
+.blur-68 { filter: blur(68px) !important; }
+.blur-69 { filter: blur(69px) !important; }
+.blur-70 { filter: blur(70px) !important; }
+.blur-71 { filter: blur(71px) !important; }
+.blur-72 { filter: blur(72px) !important; }
+.blur-73 { filter: blur(73px) !important; }
+.blur-74 { filter: blur(74px) !important; }
+.blur-75 { filter: blur(75px) !important; }
+.blur-76 { filter: blur(76px) !important; }
+.blur-77 { filter: blur(77px) !important; }
+.blur-78 { filter: blur(78px) !important; }
+.blur-79 { filter: blur(79px) !important; }
+.blur-80 { filter: blur(80px) !important; }
+.blur-81 { filter: blur(81px) !important; }
+.blur-82 { filter: blur(82px) !important; }
+.blur-83 { filter: blur(83px) !important; }
+.blur-84 { filter: blur(84px) !important; }
+.blur-85 { filter: blur(85px) !important; }
+.blur-86 { filter: blur(86px) !important; }
+.blur-87 { filter: blur(87px) !important; }
+.blur-88 { filter: blur(88px) !important; }
+.blur-89 { filter: blur(89px) !important; }
+.blur-90 { filter: blur(90px) !important; }
+.blur-91 { filter: blur(91px) !important; }
+.blur-92 { filter: blur(92px) !important; }
+.blur-93 { filter: blur(93px) !important; }
+.blur-94 { filter: blur(94px) !important; }
+.blur-95 { filter: blur(95px) !important; }
+.blur-96 { filter: blur(96px) !important; }
+.blur-97 { filter: blur(97px) !important; }
+.blur-98 { filter: blur(98px) !important; }
+.blur-99 { filter: blur(99px) !important; }
+.blur-100 { filter: blur(100px) !important; }
+
+/* ==========================================
+   3. Backdrop Blur / bd-blur (ปรับลดความแรงลงเหลือครึ่งหนึ่ง)
+   ========================================== */
+.bd-blur-0\.5 { backdrop-filter: blur(0.25px) !important; -webkit-backdrop-filter: blur(0.25px) !important; }
+.bd-blur-1 { backdrop-filter: blur(0.5px) !important; -webkit-backdrop-filter: blur(0.5px) !important; }
+.bd-blur-2 { backdrop-filter: blur(1px) !important; -webkit-backdrop-filter: blur(1px) !important; }
+.bd-blur-3 { backdrop-filter: blur(1.5px) !important; -webkit-backdrop-filter: blur(1.5px) !important; }
+.bd-blur-4 { backdrop-filter: blur(2px) !important; -webkit-backdrop-filter: blur(2px) !important; }
+.bd-blur-5 { backdrop-filter: blur(2.5px) !important; -webkit-backdrop-filter: blur(2.5px) !important; }
+.bd-blur-6 { backdrop-filter: blur(3px) !important; -webkit-backdrop-filter: blur(3px) !important; }
+.bd-blur-7 { backdrop-filter: blur(3.5px) !important; -webkit-backdrop-filter: blur(3.5px) !important; }
+.bd-blur-8 { backdrop-filter: blur(4px) !important; -webkit-backdrop-filter: blur(4px) !important; }
+.bd-blur-9 { backdrop-filter: blur(4.5px) !important; -webkit-backdrop-filter: blur(4.5px) !important; }
+.bd-blur-10 { backdrop-filter: blur(5px) !important; -webkit-backdrop-filter: blur(5px) !important; }
+.bd-blur-11 { backdrop-filter: blur(5.5px) !important; -webkit-backdrop-filter: blur(5.5px) !important; }
+.bd-blur-12 { backdrop-filter: blur(6px) !important; -webkit-backdrop-filter: blur(6px) !important; }
+.bd-blur-13 { backdrop-filter: blur(6.5px) !important; -webkit-backdrop-filter: blur(6.5px) !important; }
+.bd-blur-14 { backdrop-filter: blur(7px) !important; -webkit-backdrop-filter: blur(7px) !important; }
+.bd-blur-15 { backdrop-filter: blur(7.5px) !important; -webkit-backdrop-filter: blur(7.5px) !important; }
+.bd-blur-16 { backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; }
+.bd-blur-17 { backdrop-filter: blur(8.5px) !important; -webkit-backdrop-filter: blur(8.5px) !important; }
+.bd-blur-18 { backdrop-filter: blur(9px) !important; -webkit-backdrop-filter: blur(9px) !important; }
+.bd-blur-19 { backdrop-filter: blur(9.5px) !important; -webkit-backdrop-filter: blur(9.5px) !important; }
+.bd-blur-20 { backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; }
+.bd-blur-21 { backdrop-filter: blur(10.5px) !important; -webkit-backdrop-filter: blur(10.5px) !important; }
+.bd-blur-22 { backdrop-filter: blur(11px) !important; -webkit-backdrop-filter: blur(11px) !important; }
+.bd-blur-23 { backdrop-filter: blur(11.5px) !important; -webkit-backdrop-filter: blur(11.5px) !important; }
+.bd-blur-24 { backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; }
+.bd-blur-25 { backdrop-filter: blur(12.5px) !important; -webkit-backdrop-filter: blur(12.5px) !important; }
+.bd-blur-26 { backdrop-filter: blur(13px) !important; -webkit-backdrop-filter: blur(13px) !important; }
+.bd-blur-27 { backdrop-filter: blur(13.5px) !important; -webkit-backdrop-filter: blur(13.5px) !important; }
+.bd-blur-28 { backdrop-filter: blur(14px) !important; -webkit-backdrop-filter: blur(14px) !important; }
+.bd-blur-29 { backdrop-filter: blur(14.5px) !important; -webkit-backdrop-filter: blur(14.5px) !important; }
+.bd-blur-30 { backdrop-filter: blur(15px) !important; -webkit-backdrop-filter: blur(15px) !important; }
+.bd-blur-31 { backdrop-filter: blur(15.5px) !important; -webkit-backdrop-filter: blur(15.5px) !important; }
+.bd-blur-32 { backdrop-filter: blur(16px) !important; -webkit-backdrop-filter: blur(16px) !important; }
+.bd-blur-33 { backdrop-filter: blur(16.5px) !important; -webkit-backdrop-filter: blur(16.5px) !important; }
+.bd-blur-34 { backdrop-filter: blur(17px) !important; -webkit-backdrop-filter: blur(17px) !important; }
+.bd-blur-35 { backdrop-filter: blur(17.5px) !important; -webkit-backdrop-filter: blur(17.5px) !important; }
+.bd-blur-36 { backdrop-filter: blur(18px) !important; -webkit-backdrop-filter: blur(18px) !important; }
+.bd-blur-37 { backdrop-filter: blur(18.5px) !important; -webkit-backdrop-filter: blur(18.5px) !important; }
+.bd-blur-38 { backdrop-filter: blur(19px) !important; -webkit-backdrop-filter: blur(19px) !important; }
+.bd-blur-39 { backdrop-filter: blur(19.5px) !important; -webkit-backdrop-filter: blur(19.5px) !important; }
+.bd-blur-40 { backdrop-filter: blur(20px) !important; -webkit-backdrop-filter: blur(20px) !important; }
+.bd-blur-41 { backdrop-filter: blur(20.5px) !important; -webkit-backdrop-filter: blur(20.5px) !important; }
+.bd-blur-42 { backdrop-filter: blur(21px) !important; -webkit-backdrop-filter: blur(21px) !important; }
+.bd-blur-43 { backdrop-filter: blur(21.5px) !important; -webkit-backdrop-filter: blur(21.5px) !important; }
+.bd-blur-44 { backdrop-filter: blur(22px) !important; -webkit-backdrop-filter: blur(22px) !important; }
+.bd-blur-45 { backdrop-filter: blur(22.5px) !important; -webkit-backdrop-filter: blur(22.5px) !important; }
+.bd-blur-46 { backdrop-filter: blur(23px) !important; -webkit-backdrop-filter: blur(23px) !important; }
+.bd-blur-47 { backdrop-filter: blur(23.5px) !important; -webkit-backdrop-filter: blur(23.5px) !important; }
+.bd-blur-48 { backdrop-filter: blur(24px) !important; -webkit-backdrop-filter: blur(24px) !important; }
+.bd-blur-49 { backdrop-filter: blur(24.5px) !important; -webkit-backdrop-filter: blur(24.5px) !important; }
+.bd-blur-50 { backdrop-filter: blur(25px) !important; -webkit-backdrop-filter: blur(25px) !important; }
+.bd-blur-51 { backdrop-filter: blur(25.5px) !important; -webkit-backdrop-filter: blur(25.5px) !important; }
+.bd-blur-52 { backdrop-filter: blur(26px) !important; -webkit-backdrop-filter: blur(26px) !important; }
+.bd-blur-53 { backdrop-filter: blur(26.5px) !important; -webkit-backdrop-filter: blur(26.5px) !important; }
+.bd-blur-54 { backdrop-filter: blur(27px) !important; -webkit-backdrop-filter: blur(27px) !important; }
+.bd-blur-55 { backdrop-filter: blur(27.5px) !important; -webkit-backdrop-filter: blur(27.5px) !important; }
+.bd-blur-56 { backdrop-filter: blur(28px) !important; -webkit-backdrop-filter: blur(28px) !important; }
+.bd-blur-57 { backdrop-filter: blur(28.5px) !important; -webkit-backdrop-filter: blur(28.5px) !important; }
+.bd-blur-58 { backdrop-filter: blur(29px) !important; -webkit-backdrop-filter: blur(29px) !important; }
+.bd-blur-59 { backdrop-filter: blur(29.5px) !important; -webkit-backdrop-filter: blur(29.5px) !important; }
+.bd-blur-60 { backdrop-filter: blur(30px) !important; -webkit-backdrop-filter: blur(30px) !important; }
+.bd-blur-61 { backdrop-filter: blur(30.5px) !important; -webkit-backdrop-filter: blur(30.5px) !important; }
+.bd-blur-62 { backdrop-filter: blur(31px) !important; -webkit-backdrop-filter: blur(31px) !important; }
+.bd-blur-63 { backdrop-filter: blur(31.5px) !important; -webkit-backdrop-filter: blur(31.5px) !important; }
+.bd-blur-64 { backdrop-filter: blur(32px) !important; -webkit-backdrop-filter: blur(32px) !important; }
+.bd-blur-65 { backdrop-filter: blur(32.5px) !important; -webkit-backdrop-filter: blur(32.5px) !important; }
+.bd-blur-66 { backdrop-filter: blur(33px) !important; -webkit-backdrop-filter: blur(33px) !important; }
+.bd-blur-67 { backdrop-filter: blur(33.5px) !important; -webkit-backdrop-filter: blur(33.5px) !important; }
+.bd-blur-68 { backdrop-filter: blur(34px) !important; -webkit-backdrop-filter: blur(34px) !important; }
+.bd-blur-69 { backdrop-filter: blur(34.5px) !important; -webkit-backdrop-filter: blur(34.5px) !important; }
+.bd-blur-70 { backdrop-filter: blur(35px) !important; -webkit-backdrop-filter: blur(35px) !important; }
+.bd-blur-71 { backdrop-filter: blur(35.5px) !important; -webkit-backdrop-filter: blur(35.5px) !important; }
+.bd-blur-72 { backdrop-filter: blur(36px) !important; -webkit-backdrop-filter: blur(36px) !important; }
+.bd-blur-73 { backdrop-filter: blur(36.5px) !important; -webkit-backdrop-filter: blur(36.5px) !important; }
+.bd-blur-74 { backdrop-filter: blur(37px) !important; -webkit-backdrop-filter: blur(37px) !important; }
+.bd-blur-75 { backdrop-filter: blur(37.5px) !important; -webkit-backdrop-filter: blur(37.5px) !important; }
+.bd-blur-76 { backdrop-filter: blur(38px) !important; -webkit-backdrop-filter: blur(38px) !important; }
+.bd-blur-77 { backdrop-filter: blur(38.5px) !important; -webkit-backdrop-filter: blur(38.5px) !important; }
+.bd-blur-78 { backdrop-filter: blur(39px) !important; -webkit-backdrop-filter: blur(39px) !important; }
+.bd-blur-79 { backdrop-filter: blur(39.5px) !important; -webkit-backdrop-filter: blur(39.5px) !important; }
+.bd-blur-80 { backdrop-filter: blur(40px) !important; -webkit-backdrop-filter: blur(40px) !important; }
+.bd-blur-81 { backdrop-filter: blur(40.5px) !important; -webkit-backdrop-filter: blur(40.5px) !important; }
+.bd-blur-82 { backdrop-filter: blur(41px) !important; -webkit-backdrop-filter: blur(41px) !important; }
+.bd-blur-83 { backdrop-filter: blur(41.5px) !important; -webkit-backdrop-filter: blur(41.5px) !important; }
+.bd-blur-84 { backdrop-filter: blur(42px) !important; -webkit-backdrop-filter: blur(42px) !important; }
+.bd-blur-85 { backdrop-filter: blur(42.5px) !important; -webkit-backdrop-filter: blur(42.5px) !important; }
+.bd-blur-86 { backdrop-filter: blur(43px) !important; -webkit-backdrop-filter: blur(43px) !important; }
+.bd-blur-87 { backdrop-filter: blur(43.5px) !important; -webkit-backdrop-filter: blur(43.5px) !important; }
+.bd-blur-88 { backdrop-filter: blur(44px) !important; -webkit-backdrop-filter: blur(44px) !important; }
+.bd-blur-89 { backdrop-filter: blur(44.5px) !important; -webkit-backdrop-filter: blur(44.5px) !important; }
+.bd-blur-90 { backdrop-filter: blur(45px) !important; -webkit-backdrop-filter: blur(45px) !important; }
+.bd-blur-91 { backdrop-filter: blur(45.5px) !important; -webkit-backdrop-filter: blur(45.5px) !important; }
+.bd-blur-92 { backdrop-filter: blur(46px) !important; -webkit-backdrop-filter: blur(46px) !important; }
+.bd-blur-93 { backdrop-filter: blur(46.5px) !important; -webkit-backdrop-filter: blur(46.5px) !important; }
+.bd-blur-94 { backdrop-filter: blur(47px) !important; -webkit-backdrop-filter: blur(47px) !important; }
+.bd-blur-95 { backdrop-filter: blur(47.5px) !important; -webkit-backdrop-filter: blur(47.5px) !important; }
+.bd-blur-96 { backdrop-filter: blur(48px) !important; -webkit-backdrop-filter: blur(48px) !important; }
+.bd-blur-97 { backdrop-filter: blur(48.5px) !important; -webkit-backdrop-filter: blur(48.5px) !important; }
+.bd-blur-98 { backdrop-filter: blur(49px) !important; -webkit-backdrop-filter: blur(49px) !important; }
+.bd-blur-99 { backdrop-filter: blur(49.5px) !important; -webkit-backdrop-filter: blur(49.5px) !important; }
+.bd-blur-100 { backdrop-filter: blur(50px) !important; -webkit-backdrop-filter: blur(50px) !important; }
+
+/* ==========================================
+   4. Mosaic Effect (Range 0.5 - 10) - ฉบับคืนร่างเดิม (ไม่ทับตัวหนังสือ)
+   ========================================== */
+[class*="mosaic-"] {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+[class*="mosaic-"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+}
+
+.mosaic-0\.5::before { backdrop-filter: blur(0.5px); background-size: 4px 4px; }
+.mosaic-1::before    { backdrop-filter: blur(1px); background-size: 8px 8px; }
+.mosaic-1\.5::before  { backdrop-filter: blur(1.5px); background-size: 12px 12px; }
+.mosaic-2::before    { backdrop-filter: blur(2px); background-size: 16px 16px; }
+.mosaic-2\.5::before  { backdrop-filter: blur(2.5px); background-size: 20px 20px; }
+.mosaic-3::before    { backdrop-filter: blur(3px); background-size: 24px 24px; }
+.mosaic-3\.5::before  { backdrop-filter: blur(3.5px); background-size: 28px 28px; }
+.mosaic-4::before    { backdrop-filter: blur(4px); background-size: 32px 32px; }
+.mosaic-4\.5::before  { backdrop-filter: blur(4.5px); background-size: 36px 36px; }
+.mosaic-5::before    { backdrop-filter: blur(5px); background-size: 40px 40px; }
+.mosaic-5\.5::before  { backdrop-filter: blur(5.5px); background-size: 44px 44px; }
+.mosaic-6::before    { backdrop-filter: blur(6px); background-size: 48px 48px; }
+.mosaic-6\.5::before  { backdrop-filter: blur(6.5px); background-size: 52px 52px; }
+.mosaic-7::before    { backdrop-filter: blur(7px); background-size: 56px 56px; }
+.mosaic-7\.5::before  { backdrop-filter: blur(7.5px); background-size: 60px 60px; }
+.mosaic-8::before    { backdrop-filter: blur(8px); background-size: 64px 64px; }
+.mosaic-8\.5::before  { backdrop-filter: blur(8.5px); background-size: 68px 68px; }
+.mosaic-9::before    { backdrop-filter: blur(9px); background-size: 72px 72px; }
+.mosaic-9\.5::before  { backdrop-filter: blur(9.5px); background-size: 76px 76px; }
+.mosaic-10::before   { backdrop-filter: blur(10px); background-size: 80px 80px; }
+
+/* ==========================================
+   5. bd-black (Range 0.5 - 100)
+   ========================================== */
+.bd-black-0\.5 { background-color: rgba(0, 0, 0, 0.005) !important; }
+.bd-black-1 { background-color: rgba(0, 0, 0, 0.01) !important; }
+.bd-black-2 { background-color: rgba(0, 0, 0, 0.02) !important; }
+.bd-black-3 { background-color: rgba(0, 0, 0, 0.03) !important; }
+.bd-black-4 { background-color: rgba(0, 0, 0, 0.04) !important; }
+.bd-black-5 { background-color: rgba(0, 0, 0, 0.05) !important; }
+.bd-black-6 { background-color: rgba(0, 0, 0, 0.06) !important; }
+.bd-black-7 { background-color: rgba(0, 0, 0, 0.07) !important; }
+.bd-black-8 { background-color: rgba(0, 0, 0, 0.08) !important; }
+.bd-black-9 { background-color: rgba(0, 0, 0, 0.09) !important; }
+.bd-black-10 { background-color: rgba(0, 0, 0, 0.10) !important; }
+.bd-black-11 { background-color: rgba(0, 0, 0, 0.11) !important; }
+.bd-black-12 { background-color: rgba(0, 0, 0, 0.12) !important; }
+.bd-black-13 { background-color: rgba(0, 0, 0, 0.13) !important; }
+.bd-black-14 { background-color: rgba(0, 0, 0, 0.14) !important; }
+.bd-black-15 { background-color: rgba(0, 0, 0, 0.15) !important; }
+.bd-black-16 { background-color: rgba(0, 0, 0, 0.16) !important; }
+.bd-black-17 { background-color: rgba(0, 0, 0, 0.17) !important; }
+.bd-black-18 { background-color: rgba(0, 0, 0, 0.18) !important; }
+.bd-black-19 { background-color: rgba(0, 0, 0, 0.19) !important; }
+.bd-black-20 { background-color: rgba(0, 0, 0, 0.20) !important; }
+.bd-black-21 { background-color: rgba(0, 0, 0, 0.21) !important; }
+.bd-black-22 { background-color: rgba(0, 0, 0, 0.22) !important; }
+.bd-black-23 { background-color: rgba(0, 0, 0, 0.23) !important; }
+.bd-black-24 { background-color: rgba(0, 0, 0, 0.24) !important; }
+.bd-black-25 { background-color: rgba(0, 0, 0, 0.25) !important; }
+.bd-black-26 { background-color: rgba(0, 0, 0, 0.26) !important; }
+.bd-black-27 { background-color: rgba(0, 0, 0, 0.27) !important; }
+.bd-black-28 { background-color: rgba(0, 0, 0, 0.28) !important; }
+.bd-black-29 { background-color: rgba(0, 0, 0, 0.29) !important; }
+.bd-black-30 { background-color: rgba(0, 0, 0, 0.30) !important; }
+.bd-black-31 { background-color: rgba(0, 0, 0, 0.31) !important; }
+.bd-black-32 { background-color: rgba(0, 0, 0, 0.32) !important; }
+.bd-black-33 { background-color: rgba(0, 0, 0, 0.33) !important; }
+.bd-black-34 { background-color: rgba(0, 0, 0, 0.34) !important; }
+.bd-black-35 { background-color: rgba(0, 0, 0, 0.35) !important; }
+.bd-black-36 { background-color: rgba(0, 0, 0, 0.36) !important; }
+.bd-black-37 { background-color: rgba(0, 0, 0, 0.37) !important; }
+.bd-black-38 { background-color: rgba(0, 0, 0, 0.38) !important; }
+.bd-black-39 { background-color: rgba(0, 0, 0, 0.39) !important; }
+.bd-black-40 { background-color: rgba(0, 0, 0, 0.40) !important; }
+.bd-black-41 { background-color: rgba(0, 0, 0, 0.41) !important; }
+.bd-black-42 { background-color: rgba(0, 0, 0, 0.42) !important; }
+.bd-black-43 { background-color: rgba(0, 0, 0, 0.43) !important; }
+.bd-black-44 { background-color: rgba(0, 0, 0, 0.44) !important; }
+.bd-black-45 { background-color: rgba(0, 0, 0, 0.45) !important; }
+.bd-black-46 { background-color: rgba(0, 0, 0, 0.46) !important; }
+.bd-black-47 { background-color: rgba(0, 0, 0, 0.47) !important; }
+.bd-black-48 { background-color: rgba(0, 0, 0, 0.48) !important; }
+.bd-black-49 { background-color: rgba(0, 0, 0, 0.49) !important; }
+.bd-black-50 { background-color: rgba(0, 0, 0, 0.50) !important; }
+.bd-black-51 { background-color: rgba(0, 0, 0, 0.51) !important; }
+.bd-black-52 { background-color: rgba(0, 0, 0, 0.52) !important; }
+.bd-black-53 { background-color: rgba(0, 0, 0, 0.53) !important; }
+.bd-black-54 { background-color: rgba(0, 0, 0, 0.54) !important; }
+.bd-black-55 { background-color: rgba(0, 0, 0, 0.55) !important; }
+.bd-black-56 { background-color: rgba(0, 0, 0, 0.56) !important; }
+.bd-black-57 { background-color: rgba(0, 0, 0, 0.57) !important; }
+.bd-black-58 { background-color: rgba(0, 0, 0, 0.58) !important; }
+.bd-black-59 { background-color: rgba(0, 0, 0, 0.59) !important; }
+.bd-black-60 { background-color: rgba(0, 0, 0, 0.60) !important; }
+.bd-black-61 { background-color: rgba(0, 0, 0, 0.61) !important; }
+.bd-black-62 { background-color: rgba(0, 0, 0, 0.62) !important; }
+.bd-black-63 { background-color: rgba(0, 0, 0, 0.63) !important; }
+.bd-black-64 { background-color: rgba(0, 0, 0, 0.64) !important; }
+.bd-black-65 { background-color: rgba(0, 0, 0, 0.65) !important; }
+.bd-black-66 { background-color: rgba(0, 0, 0, 0.66) !important; }
+.bd-black-67 { background-color: rgba(0, 0, 0, 0.67) !important; }
+.bd-black-68 { background-color: rgba(0, 0, 0, 0.68) !important; }
+.bd-black-69 { background-color: rgba(0, 0, 0, 0.69) !important; }
+.bd-black-70 { background-color: rgba(0, 0, 0, 0.70) !important; }
+.bd-black-71 { background-color: rgba(0, 0, 0, 0.71) !important; }
+.bd-black-72 { background-color: rgba(0, 0, 0, 0.72) !important; }
+.bd-black-73 { background-color: rgba(0, 0, 0, 0.73) !important; }
+.bd-black-74 { background-color: rgba(0, 0, 0, 0.74) !important; }
+.bd-black-75 { background-color: rgba(0, 0, 0, 0.75) !important; }
+.bd-black-76 { background-color: rgba(0, 0, 0, 0.76) !important; }
+.bd-black-77 { background-color: rgba(0, 0, 0, 0.77) !important; }
+.bd-black-78 { background-color: rgba(0, 0, 0, 0.78) !important; }
+.bd-black-79 { background-color: rgba(0, 0, 0, 0.79) !important; }
+.bd-black-80 { background-color: rgba(0, 0, 0, 0.80) !important; }
+.bd-black-81 { background-color: rgba(0, 0, 0, 0.81) !important; }
+.bd-black-82 { background-color: rgba(0, 0, 0, 0.82) !important; }
+.bd-black-83 { background-color: rgba(0, 0, 0, 0.83) !important; }
+.bd-black-84 { background-color: rgba(0, 0, 0, 0.84) !important; }
+.bd-black-85 { background-color: rgba(0, 0, 0, 0.85) !important; }
+.bd-black-86 { background-color: rgba(0, 0, 0, 0.86) !important; }
+.bd-black-87 { background-color: rgba(0, 0, 0, 0.87) !important; }
+.bd-black-88 { background-color: rgba(0, 0, 0, 0.88) !important; }
+.bd-black-89 { background-color: rgba(0, 0, 0, 0.89) !important; }
+.bd-black-90 { background-color: rgba(0, 0, 0, 0.90) !important; }
+.bd-black-91 { background-color: rgba(0, 0, 0, 0.91) !important; }
+.bd-black-92 { background-color: rgba(0, 0, 0, 0.92) !important; }
+.bd-black-93 { background-color: rgba(0, 0, 0, 0.93) !important; }
+.bd-black-94 { background-color: rgba(0, 0, 0, 0.94) !important; }
+.bd-black-95 { background-color: rgba(0, 0, 0, 0.95) !important; }
+.bd-black-96 { background-color: rgba(0, 0, 0, 0.96) !important; }
+.bd-black-97 { background-color: rgba(0, 0, 0, 0.97) !important; }
+.bd-black-98 { background-color: rgba(0, 0, 0, 0.98) !important; }
+.bd-black-99 { background-color: rgba(0, 0, 0, 0.99) !important; }
+.bd-black-100 { background-color: rgba(0, 0, 0, 1) !important; }
+
+/* ==========================================================================
+   หมวดที่ 6: ระบบความกว้างและการจัดคอลัมน์ (Column & Grid Widths)
+   คำอธิบาย: จัดสัดส่วน Layout ด้วยระบบ Flexbox / Ratios / Fractions 1-12 และ Percentages
+   - Card Ratios: .col-1/2 (50%), .col-1/3 (33.33%), .col-1/4 (25%), .col-1/5 (20%)
+   - Fractions 1-12: .col-1/12 ถึง .col-12/12
+   - Percentages: .col-10% ถึง .col-100%
+   ========================================================================== */
+/* Card Ratios */
+.col-1\/2 { flex: 0 0 auto; width: 50% !important; }
+.col-1\/3 { flex: 0 0 auto; width: 33.333333% !important; }
+.col-1\/4 { flex: 0 0 auto; width: 25% !important; }
+.col-1\/5 { flex: 0 0 auto; width: 20% !important; }
+
+/* Fractions 1-12 */
+.col-1\/12  { flex: 0 0 auto; width: calc(100% * 1 / 12) !important; }
+.col-2\/12  { flex: 0 0 auto; width: calc(100% * 2 / 12) !important; }
+.col-3\/12  { flex: 0 0 auto; width: calc(100% * 3 / 12) !important; }
+.col-4\/12  { flex: 0 0 auto; width: calc(100% * 4 / 12) !important; }
+.col-5\/12  { flex: 0 0 auto; width: calc(100% * 5 / 12) !important; }
+.col-6\/12  { flex: 0 0 auto; width: calc(100% * 6 / 12) !important; }
+.col-7\/12  { flex: 0 0 auto; width: calc(100% * 7 / 12) !important; }
+.col-8\/12  { flex: 0 0 auto; width: calc(100% * 8 / 12) !important; }
+.col-9\/12  { flex: 0 0 auto; width: calc(100% * 9 / 12) !important; }
+.col-10\/12 { flex: 0 0 auto; width: calc(100% * 10 / 12) !important; }
+.col-11\/12 { flex: 0 0 auto; width: calc(100% * 11 / 12) !important; }
+.col-12\/12 { flex: 0 0 auto; width: calc(100% * 12 / 12) !important; }
+
+/* 3. รูปแบบใส่เครื่องหมายเปอร์เซ็นต์ (% Format: e.g. col-25%, col-50%) */
+.col-10\%  { flex: 0 0 auto; width: 10% !important; }
+.col-20\%  { flex: 0 0 auto; width: 20% !important; }
+.col-25\%  { flex: 0 0 auto; width: 25% !important; }
+.col-30\%  { flex: 0 0 auto; width: 30% !important; }
+.col-33\%  { flex: 0 0 auto; width: 33.333333% !important; }
+.col-40\%  { flex: 0 0 auto; width: 40% !important; }
+.col-50\%  { flex: 0 0 auto; width: 50% !important; }
+.col-60\%  { flex: 0 0 auto; width: 60% !important; }
+.col-70\%  { flex: 0 0 auto; width: 70% !important; }
+.col-75\%  { flex: 0 0 auto; width: 75% !important; }
+.col-80\%  { flex: 0 0 auto; width: 80% !important; }
+.col-90\%  { flex: 0 0 auto; width: 90% !important; }
+.col-100\% { flex: 0 0 auto; width: 100% !important; }
+
+/* ==========================================================================
+   หมวดที่ 7: การไล่เฉดสี RGB และภาพเคลื่อนไหว (Gradients & Animated Gradients)
+   คำอธิบาย: ไล่เฉดสีรุ้ง/RGB ทั้งแบบนิ่ง (Static) และแบบเคลื่อนไหว (Animated)
+   รองรับทั้งสีพื้นหลัง (.bg-gradient-*) และสีตัวอักษรแบบคลิป (.text-gradient-*)
+   ========================================================================== */
+/* ==========================================
+   RGB & Rainbow Gradient Utilities
+   ========================================== */
+
+/* 1. แบบนิ่ง (Static Gradients) */
+.bg-gradient-rgb {
+    background: linear-gradient(135deg, #ff3366, #ff9933, #33ccff, #9933ff) !important;
+}
+.text-gradient-rgb {
+    background: linear-gradient(135deg, #ff3366, #ff9933, #33ccff, #9933ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+
+/* 2. แบบวนไล่จากซ้ายไปขวา (Left to Right Animation) */
+@keyframes gradientLR {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.bg-gradient-lr {
+    background: linear-gradient(270deg, #ff3366, #ff9933, #33ccff, #9933ff) !important;
+    background-size: 400% 400%;
+    animation: gradientLR 6s ease infinite;
+}
+.text-gradient-lr {
+    background: linear-gradient(270deg, #ff3366, #ff9933, #33ccff, #9933ff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: gradientLR 6s ease infinite;
+}
+
+
+/* 3. แบบวนไล่จากบนลงล่าง (Top to Bottom Animation) */
+@keyframes gradientTB {
+    0% { background-position: 50% 0%; }
+    50% { background-position: 50% 100%; }
+    100% { background-position: 50% 0%; }
+}
+.bg-gradient-tb {
+    background: linear-gradient(180deg, #ff3366, #ff9933, #33ccff, #9933ff) !important;
+    background-size: 400% 400%;
+    animation: gradientTB 6s ease infinite;
+}
+.text-gradient-tb {
+    background: linear-gradient(180deg, #ff3366, #ff9933, #33ccff, #9933ff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: gradientTB 6s ease infinite;
+}
+
+
+/* 4. แบบขวาไปซ้ายและวนกลับ (Right to Left & Loop) */
+@keyframes gradientRL {
+    0% { background-position: 100% 50%; }
+    50% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+.bg-gradient-rl {
+    background: linear-gradient(90deg, #ff3366, #ff9933, #33ccff, #9933ff) !important;
+    background-size: 400% 400%;
+    animation: gradientRL 6s ease infinite;
+}
+.text-gradient-rl {
+    background: linear-gradient(90deg, #ff3366, #ff9933, #33ccff, #9933ff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: gradientRL 6s ease infinite;
+}
+
+
+/* 5. แบบเปลี่ยนสีวนรอบ (Color Cycling / Hue Shift) */
+@keyframes colorCycle {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+.bg-gradient-cycle {
+    background: linear-gradient(135deg, #ff3366, #ff9933, #33ccff, #9933ff) !important;
+    animation: colorCycle 4s linear infinite;
+}
+.text-gradient-cycle {
+    background: linear-gradient(135deg, #ff3366, #ff9933, #33ccff, #9933ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: colorCycle 4s linear infinite;
+}
+
+    </style>
